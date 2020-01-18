@@ -67,12 +67,9 @@ class Polynomial(layers.Layer):
     
     shapeIn = inputs.shape
     shape = self.w.shape
-    print('inputs.shape', inputs.shape)
     
     res = self.basis(inputs)
-    print('res', res)
-    print('res', res.shape)
-    print('res', tf.shape(res)[0])
+    
     res = tf.reshape(res, [-1,res.shape[1]*res.shape[2]])
     temp = tf.reshape(self.w, [-1,shape[1]*shape[2]])
     
