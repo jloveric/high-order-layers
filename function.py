@@ -17,7 +17,7 @@ xTrain = tf.random.uniform([1000], minval=-1, maxval=1, dtype=tf.float32)
 yTrain = 0.5*tf.math.sin(factor*xTrain)
 
 model = tf.keras.models.Sequential([
-  poly.Polynomial(1, 1),
+  poly.Polynomial(1, 1,basis=poly.b5),
 ])
 
 model.compile(optimizer='adam',
