@@ -20,8 +20,11 @@ class FunctionWrapper() :
 
 
 b0 = FunctionWrapper(basis0, 1)
+
 b1 = FunctionWrapper(basis1, 2)
 b1D = FunctionWrapper(basis1DG, 4)
+b1C = FunctionWrapper(basis1CG, 3)
+
 
 b2 = FunctionWrapper(basis2, 3)
 b2C = FunctionWrapper(basis2CG, 5)

@@ -16,23 +16,46 @@ yTest = 0.5*np.sin(factor*xTest)
 xTrain = tf.random.uniform([1000], minval=-1, maxval=1, dtype=tf.float32)
 yTrain = 0.5*tf.math.sin(factor*xTrain)
 
-model = tf.keras.models.Sequential([
-  poly.Polynomial(1, 1,basis=poly.b5),
-])
+modelSetD = [
+    {'name' : 'Discontinuous 1', 'func' : poly.b1D},
+    {'name' : 'Discontinous 2', 'func' : poly.b2D}, 
+    {'name' : 'Discontinuous 5', 'func' : poly.b5D}]
 
-model.compile(optimizer='adam',
-              loss='mean_squared_error',
-              metrics=['accuracy'])
+modelSetC = [
+    {'name' : 'Continuous 1', 'func' : poly.b1C},
+    {'name' : 'Continous 2', 'func' : poly.b2C}, 
+    {'name' : 'Continuous 5', 'func' : poly.b5C}]
 
-model.fit(xTrain, yTrain, epochs=20, batch_size=1)
-model.evaluate(xTrain, yTrain)
+modelSet = [
+    {'name' : 'Continuous 1', 'func' : poly.b1},
+    {'name' : 'Continous 2', 'func' : poly.b2}, 
+    {'name' : 'Continuous 5', 'func' : poly.b5}]
 
-predictions = model.predict(xTrain)
-print("predictions", predictions.shape, predictions)
+colorIndex = ['red', 'green', 'blue', 'purple']
+symbol = ['+','x','o','v']
+
+thisModelSet = modelSetD
+
+for i in range(0, len(thisModelSet)) :
+
+    model = tf.keras.models.Sequential([
+    poly.Polynomial(1, 1,basis=thisModelSet[i]['func']),
+    ])
+
+    model.compile(optimizer='adam',
+                loss='mean_squared_error',
+                metrics=['accuracy'])
+
+    model.fit(xTrain, yTrain, epochs=100, batch_size=1)
+    model.evaluate(xTrain, yTrain)
+
+    predictions = model.predict(xTrain)
+    
+    plt.scatter(xTrain,predictions.flatten(),c=colorIndex[i],marker=symbol[i], label=thisModelSet[i]['name'])
 
 plt.plot(xTest,yTest,'-')
-plt.scatter(xTrain,predictions.flatten(),c='red',marker='+')
-plt.title('5th order polynomial synapse - no hidden layers')
+plt.title('polynomial synapse - no hidden layers')
 plt.xlabel('x')
 plt.ylabel('y')
+plt.legend()
 plt.show()

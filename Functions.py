@@ -19,6 +19,10 @@ def basis1(x) :
 def basis1DG(xIn) :
     return basisSplit(xIn, basis1DG1)
 
+# piecewice continuous linear
+def basis1CG(xIn) :
+    return basisSplit(xIn, basis1CG1)
+
 #quadratic polynomial
 def basis2(xIn) :
     #flatten
@@ -113,6 +117,15 @@ def basis1DG1(x) :
 
     res1 = tf.convert_to_tensor([xr*0.0, xr*0.0, -0.5*(xr-1.0),0.5*(xr+1.0)])
     res2 = tf.convert_to_tensor([-0.5*(xl-1.0),0.5*(xl+1.0),xl*0.0,xl*0.0])
+
+    return res1 + res2
+
+def basis1CG1(x) :
+    xr = tf.where(x>0,2.0*(x-0.5),0*x)
+    xl = tf.where(x<=0,2.0*(x+0.5),0*x)
+
+    res1 = tf.convert_to_tensor([xr*0.0, -0.5*(xr-1.0),0.5*(xr+1.0)])
+    res2 = tf.convert_to_tensor([-0.5*(xl-1.0),0.5*(xl+1.0), xl*0.0])
 
     return res1 + res2
 
@@ -216,29 +229,8 @@ def basis5CG1(x) :
     return res1+res2
 
 def basisSplit(xIn, thisBasis) :
-    shape = xIn.get_shape().as_list()
-
-    batchSize = tf.shape(xIn)[0]
-    sess = tf.Session()
-    batchSizeVal = sess.run(batchSize)
-
-    print('batchSize', batchSize, batchSizeVal)
-    #shape2 = tf.shape(xIn).value
-    #print('shape2', shape2)
-    #ans = tf.size(xIn)
-    #rint('ans', ans)
-    #x = np.copy(np.tanh(xIn)).flatten()
-    #x = tf.reshape(xIn,[-1])
-    x = xIn
-
-    final = tf.transpose(thisBasis(x))
-
-    change = final.shape[1]
-    print('shape', shape,'change', change, 'final', final)
-    shape.append(change)
-    shape[0]=-1
-    print('lshape',shape)
-    return tf.reshape(final, tf.TensorShape(shape))    
+    final = tf.transpose(thisBasis(xIn))
+    return tf.transpose(final, [1,0,2])   
 
 #application of polynomial with weights
 def func2(x,w) :
