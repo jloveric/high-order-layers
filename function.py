@@ -28,13 +28,15 @@ modelSetC = [
 
 modelSet = [
     {'name' : 'Continuous 1', 'func' : poly.b1},
-    {'name' : 'Continous 2', 'func' : poly.b2}, 
+    {'name' : 'Continous 2', 'func' : poly.b2},
+    {'name' : 'Continous 3', 'func' : poly.b3},
+    {'name' : 'Continous 4', 'func' : poly.b4}, 
     {'name' : 'Continuous 5', 'func' : poly.b5}]
 
-colorIndex = ['red', 'green', 'blue', 'purple']
-symbol = ['+','x','o','v']
+colorIndex = ['red', 'green', 'blue', 'purple','black']
+symbol = ['+','x','o','v','.']
 
-thisModelSet = modelSetD
+thisModelSet = modelSet
 
 for i in range(0, len(thisModelSet)) :
 
@@ -46,14 +48,14 @@ for i in range(0, len(thisModelSet)) :
                 loss='mean_squared_error',
                 metrics=['accuracy'])
 
-    model.fit(xTrain, yTrain, epochs=100, batch_size=1)
+    model.fit(xTrain, yTrain, epochs=10, batch_size=1)
     model.evaluate(xTrain, yTrain)
 
     predictions = model.predict(xTrain)
     
     plt.scatter(xTrain,predictions.flatten(),c=colorIndex[i],marker=symbol[i], label=thisModelSet[i]['name'])
 
-plt.plot(xTest,yTest,'-')
+plt.plot(xTest,yTest,'-',label='actual')
 plt.title('polynomial synapse - no hidden layers')
 plt.xlabel('x')
 plt.ylabel('y')
