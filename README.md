@@ -10,3 +10,9 @@ The idea is extremely simple - instead of a single weight at the synapse, use n-
 Here is the result for fitting a sin wave with no hidden layers.  There is only one input neuron and one output neuron and no neuronal non-linearity.  A 5th order polynomial is used in the synapse - there are 6 weights and only one synapse in the network.
 
 ![](sin5p.png)
+
+## Example 2
+
+Same problem, but comparison between 1st 3rd and 5th order polynomial synapses.  A standard network would have a 0th order synapse, but offset by a bias weight (line possibly shifted from the origin).
+
+![](polynomialSynapse.png)
