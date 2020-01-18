@@ -266,9 +266,3 @@ class Polynomial(layers.Layer):
     ans = tf.matmul(res, temp, transpose_a=False, transpose_b=True) +self.b
     
     return ans
-
-#x = tf.ones((1,2))
-#print('x', x)
-#linear_layer = Polynomial(4, 2)
-#y = linear_layer(x)
-#print(y)

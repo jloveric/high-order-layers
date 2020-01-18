@@ -4,3 +4,9 @@ order weights in the synapse of of a standard neural network [here](https://www.
 reasonable performance.
 
 The idea is extremely simple - instead of a single weight at the synapse, use n-weights.  The n-weights describe a piecewise polynomial and each of the n-weights can be updated independently.  A Chebyshev polynomial and gauss lobatto points are used to minimize oscillations of the polynomial.
+
+# Example
+
+Here is the result for fitting a sin wave.  There are no hidden layers and only one input neuron and one output neuron and no neuronal non-linearity.  A 5th order polynomial is used in the synapse - there are 6 weights and only one synapse in the network.
+
+![](sin5p.png)
