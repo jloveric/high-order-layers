@@ -237,7 +237,7 @@ def func2(x,w) :
 
 class Polynomial(layers.Layer):
 
-  def __init__(self, units=32, input_dim=100, order=11):
+  def __init__(self, units=32, input_dim=100, order=5):
     super(Polynomial, self).__init__()
 
     w_init = tf.random_normal_initializer()
@@ -256,7 +256,7 @@ class Polynomial(layers.Layer):
     shape = self.w.shape
     print('inputs.shape', inputs.shape)
     #res = basis5(inputs)
-    res = basis5DG(inputs)
+    res = basis5(inputs)
     print('res', res)
     print('res', res.shape)
     print('res', tf.shape(res)[0])
