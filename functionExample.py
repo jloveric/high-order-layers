@@ -7,7 +7,7 @@ synaptic weights
 import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
-import PolynomialLayers as poly
+import snovalleyai_piecewise_polynomial_layers.PolynomialLayers as poly
 
 factor = 1.5*3.14159
 xTest = np.arange(100)/50-1.0

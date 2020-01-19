@@ -1,7 +1,7 @@
 '''
 An attempt to implement my piecwise polynomial layers in tensorflow, in python for now.
 '''
-from Functions import *
+from . Functions import *
 from tensorflow.keras import layers
 import tensorflow as tf
 import numpy as np

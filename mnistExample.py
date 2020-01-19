@@ -1,5 +1,5 @@
 import tensorflow as tf
-import PolynomialLayers as poly
+import snovalleyai_piecewise_polynomial_layers.PolynomialLayers as poly
 mnist = tf.keras.datasets.mnist
 
 (x_train, y_train),(x_test, y_test) = mnist.load_data()
