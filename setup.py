@@ -12,7 +12,7 @@ setuptools.setup(
     description="Piecewise polynomial layer for tensorflow",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/jloveric/PiecewisePolynomialLayers",
+    url="https://github.com/jloveric/piecewise-polynomial-layers",
     packages=setuptools.find_packages(),
     install_requires=['numpy','tensorflow'],
     classifiers=[
