@@ -48,20 +48,30 @@ class Polynomial(layers.Layer):
   input_dim is the number of dimensions in the input
   basis is an instance of the "Function" class which contains a basis and the number of weights
   '''
-  def __init__(self, units=32, input_dim=100, basis=None):
+  def __init__(self, units=None, basis=None):
     super(Polynomial, self).__init__()
+
+    if units == None :
+      print('You must define the units')
+      raise
 
     if basis == None :
       print('You must define the basis.')
       raise
 
+    self.units = units
     self.basis = basis  
+
+  def build(self, input_shape) :
+    input_dim = int(input_shape[-1])
+
     w_init = tf.random_normal_initializer()
-    self.w = tf.Variable(initial_value=w_init(shape=(units, input_dim, self.basis.numWeights),dtype='float32'), trainable=True)
+    self.w = tf.Variable(initial_value=w_init(shape=(self.units, input_dim, self.basis.numWeights),dtype='float32'), trainable=True)
     
     ## Set all these to zero
     b_init = tf.zeros_initializer()
-    self.b = tf.Variable(initial_value=b_init(shape=(units,), dtype='float32'), trainable=True)
+    self.b = tf.Variable(initial_value=b_init(shape=(self.units,), dtype='float32'), trainable=True)
+
 
   def call(self, inputs):
     

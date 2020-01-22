@@ -45,7 +45,7 @@ thisModelSet = modelSetD
 for i in range(0, len(thisModelSet)) :
 
     model = tf.keras.models.Sequential([
-    poly.Polynomial(1, 1,basis=thisModelSet[i]['func']),
+    poly.Polynomial(1, basis=thisModelSet[i]['func']),
     ])
 
     model.compile(optimizer='adam',

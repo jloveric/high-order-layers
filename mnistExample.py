@@ -11,13 +11,13 @@ basis = poly.b3
 
 model = tf.keras.models.Sequential([
   tf.keras.layers.Flatten(input_shape=(28, 28)),
-  poly.Polynomial(units, 28*28, basis=basis),
+  poly.Polynomial(units, basis=basis),
   tf.keras.layers.LayerNormalization(),
-  poly.Polynomial(units, units, basis=basis),
+  poly.Polynomial(units, basis=basis),
   tf.keras.layers.LayerNormalization(),
-  poly.Polynomial(units, units, basis=basis),
+  poly.Polynomial(units, basis=basis),
   tf.keras.layers.LayerNormalization(),
-  poly.Polynomial(units, units, basis=basis),
+  poly.Polynomial(units, basis=basis),
   tf.keras.layers.LayerNormalization(),
   tf.keras.layers.Dense(10, activation='softmax')
 ])
