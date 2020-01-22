@@ -9,22 +9,25 @@ import numpy as np
 import tensorflow as tf
 import snovalleyai_piecewise_polynomial_layers.PolynomialLayers as poly
 
+offset = -0.1
 factor = 1.5*3.14159
 xTest = np.arange(100)/50-1.0
-yTest = 0.5*np.sin(factor*xTest)
+yTest = 0.5*np.cos(factor*(xTest-offset))
 
-xTrain = tf.random.uniform([1000], minval=-1, maxval=1, dtype=tf.float32)
-yTrain = 0.5*tf.math.sin(factor*xTrain)
+xTrain = tf.random.uniform([1000], minval=-1.0, maxval=1, dtype=tf.float32)
+yTrain = 0.5*tf.math.cos(factor*(xTrain-offset))
 
 modelSetD = [
     {'name' : 'Discontinuous 1', 'func' : poly.b1D},
-    {'name' : 'Discontinous 2', 'func' : poly.b2D}, 
-    {'name' : 'Discontinuous 5', 'func' : poly.b5D}]
+    {'name' : 'Discontinuous 2', 'func' : poly.b2D}, 
+    {'name' : 'Discontinuous 5', 'func' : poly.b5D}
+    ]
 
 modelSetC = [
     {'name' : 'Continuous 1', 'func' : poly.b1C},
-    {'name' : 'Continous 2', 'func' : poly.b2C}, 
-    {'name' : 'Continuous 5', 'func' : poly.b5C}]
+    #{'name' : 'Continous 2', 'func' : poly.b2C}, 
+    #{'name' : 'Continuous 5', 'func' : poly.b5C}
+    ]
 
 modelSet = [
     {'name' : '1st order', 'func' : poly.b1},
@@ -33,10 +36,11 @@ modelSet = [
     #{'name' : '4th order', 'func' : poly.b4}, 
     {'name' : '5th order', 'func' : poly.b5}]
 
+
 colorIndex = ['red', 'green', 'blue', 'purple','black']
 symbol = ['+','x','o','v','.']
 
-thisModelSet = modelSet
+thisModelSet = modelSetD
 
 for i in range(0, len(thisModelSet)) :
 
