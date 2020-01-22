@@ -25,8 +25,8 @@ modelSetD = [
 
 modelSetC = [
     {'name' : 'Continuous 1', 'func' : poly.b1C},
-    #{'name' : 'Continous 2', 'func' : poly.b2C}, 
-    #{'name' : 'Continuous 5', 'func' : poly.b5C}
+    {'name' : 'Continuous 2', 'func' : poly.b2C}, 
+    {'name' : 'Continuous 5', 'func' : poly.b5C}
     ]
 
 modelSet = [
@@ -52,7 +52,7 @@ for i in range(0, len(thisModelSet)) :
                 loss='mean_squared_error',
                 metrics=['accuracy'])
 
-    model.fit(xTrain, yTrain, epochs=10, batch_size=1)
+    model.fit(xTrain, yTrain, epochs=6, batch_size=1)
     model.evaluate(xTrain, yTrain)
 
     predictions = model.predict(xTest)

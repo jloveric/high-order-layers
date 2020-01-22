@@ -52,9 +52,15 @@ Here is the result for fitting a sin wave with no hidden layers.  There is only 
 
 # Example 2
 
-Same problem, but comparison between 1st 3rd and 5th order discontinuous polynomial synapses.
+Same problem, but comparison between 1st 3rd and 5th order piecewise discontinuous polynomial synapses.
 
 ![](sin5d.png)
+
+# Example 3
+
+Same problem, but comparison between 1st 3rd and 5th order piecewise continuous polynomial synapses.
+
+![](sin5c.png)
 
 # Available polynomial orders
 
@@ -73,15 +79,17 @@ poly.b1D #linear chebyshev (discontinuous pair)
 poly.b2D #quadratic chebyshev (discontinuous pair)
 poly.b5D #5th order chebyshev (discontinuous pair)
 
-## Continuous piecewise polynomials, 2 pieces --- these do not work
-## as they are still discontinuous - believed to be an issue with how
-## tensorflow deals with switches in analytic differentiation.
+## Continuous piecewise polynomials, 2 pieces
 poly.b1D #linear chebyshev (continuous pair)
 poly.b2D #quadratic chebyshev (continuous pair)
 poly.b5D #5th order chebyshev (continuous pair)
 ```
+The layer inside tensorflow is then called (see mnist example above)
+```
+poly.Polynomial(units, input, basis=basis),
+```
+where units is the number of units and input is the size of the input
+
 
 # Notes
-You can achieve high accuracy with very small networks without a non-linearity at the neuron.  The price though, is things are pretty inefficient
-
-Straight polynomials (b1-b5) can be used and each layer increases polynomial order.  Convergence is much better with small batch size - so, unfortunately, for a technique like this to really take off, perhaps we need to wait for something like graphcore CPUs to be come mainstream (which are still fast for small batch).  The discontinuous piecewise polynomials can also work, (b1D-b5D), though I've found the optimizer I used in my own code - using the optimizer "No more pesky learning rates" seems to work much better for these polynomials than the standard Tensorflow optimizers.  Finally, the continuous polynomials (b1C-b5C) are treated as discontinuous by Tensorflow - I think this has do with how the auto differentiator deals with switches as new weights are being added - I'll need to understand this more.
+You can achieve high accuracy with very small networks without a non-linearity at the neuron.
