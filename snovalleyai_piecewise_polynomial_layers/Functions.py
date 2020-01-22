@@ -128,15 +128,11 @@ def basis1CG1(x) :
     pos = tf.where(x>0,1.0,0.0)
     neg = tf.where(x<=0,1.0,0.0)
 
-    #print('damd should be in here')
     res1 = pos*tf.convert_to_tensor([xr*0.0+1e-6, -0.5*(xr-1.0),0.5*(xr+1.0)])
     res2 = neg*tf.convert_to_tensor([-0.5*(xl-1.0),0.5*(xl+1.0), xl*0.0+1e-6])
-    #res = tf.convert_to_tensor([-0.5*(xl-1.0), 0.5*(xl+1.0)-0.5*(xr-1.0),0.5*(xr+1.0)]) 
-    #tf.print(x, output_stream=sys.stderr)
-    #tf.print(res1+res2, output_stream=sys.stdout)
+    
     return res1+res2
-    #return res1 + res2
-
+    
 def basis2CG1(x) :
     xr = tf.where(x>0,2.0*(x-0.5),0*x)
     xl = tf.where(x<=0,2.0*(x+0.5),0*x)
@@ -181,7 +177,6 @@ def basis5DG1(x) :
                 2.83606797749979 * powEta2 - 0.3055728090000842 * eta - 0.247213595499958,
                 (0.1 + 0.1 * eta - 1.2 * powEta2 - 1.2 * powEta3 + 1.6 * powEta4 + 1.6 * powEta5)])
     
-    #xl = 2.0*(x[x<=0]+0.5)
     xl = tf.where(x<=0,2.0*(x+0.5),0*x)
     
     eta = xl

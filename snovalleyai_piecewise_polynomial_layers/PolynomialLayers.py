@@ -73,6 +73,6 @@ class Polynomial(layers.Layer):
     res = tf.reshape(res, [-1,res.shape[1]*res.shape[2]])
     temp = tf.reshape(self.w, [-1,shape[1]*shape[2]])
     
-    ans = tf.matmul(res, temp, transpose_a=False, transpose_b=True) +self.b
+    ans = tf.matmul(res, temp, transpose_a=False, transpose_b=True) #+self.b
     
     return ans
