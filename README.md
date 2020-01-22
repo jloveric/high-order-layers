@@ -86,12 +86,12 @@ poly.b2D #quadratic chebyshev (discontinuous pair)
 poly.b5D #5th order chebyshev (discontinuous pair)
 
 ## Continuous piecewise polynomials, 2 pieces
-poly.b1D #linear chebyshev (continuous pair)
-poly.b2D #quadratic chebyshev (continuous pair)
-poly.b5D #5th order chebyshev (continuous pair)
+poly.b1C #linear chebyshev (continuous pair)
+poly.b2C #quadratic chebyshev (continuous pair)
+poly.b5C #5th order chebyshev (continuous pair)
 ```
 The layer inside tensorflow is then called (see mnist example above)
 ```
 poly.Polynomial(units, input, basis=basis),
 ```
-where units is the number of units and input is the size of the input
+where units is the number of units and input is the size of the input and basis would be 'poly.b3' for example.

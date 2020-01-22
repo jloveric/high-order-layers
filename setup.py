@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="snovalleyai_piecewise_polynomial_layers",
-    version="0.0.1",
+    version="1.0.0",
     author="John Loverich",
     author_email="john.loverich@gmail.com",
     description="Piecewise polynomial layer for tensorflow",
