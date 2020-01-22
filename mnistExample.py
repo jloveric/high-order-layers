@@ -26,6 +26,5 @@ model.compile(optimizer='adam',
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
-#Batch norm should be messed up for batch_size=1, but seems to be working - perhaps not normalizing
 model.fit(x_train, y_train, epochs=20, batch_size=10)
 model.evaluate(x_test, y_test)
