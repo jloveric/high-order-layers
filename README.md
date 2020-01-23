@@ -69,7 +69,7 @@ These examples have not been tuned.
 
 Here is the result for fitting a sin wave with no hidden layers.  There is only one input neuron and one output neuron and no neuronal non-linearity.  A 5th order polynomial is used in the synapse - there are 6 weights and only one synapse in the network.
 
-![](polynomialSynapse.png)
+![](sin5p.png)
 
 # Example 2 - Piecewise Discontinuous Polynomial (2 pieces)
 
