@@ -24,6 +24,7 @@ pip install snovalleyai-piecewise-polynomial-layers
 ```python
 import tensorflow as tf
 import snovalleyai_piecewise_polynomial_layers.PolynomialLayers as poly
+from tensorflow.keras.layers import *
 mnist = tf.keras.datasets.mnist
 
 (x_train, y_train),(x_test, y_test) = mnist.load_data()
@@ -34,16 +35,16 @@ units = 20
 basis = poly.b3
 
 model = tf.keras.models.Sequential([
-  tf.keras.layers.Flatten(input_shape=(28, 28)),
+  Flatten(input_shape=(28, 28)),
   poly.Polynomial(units, basis=basis),
-  tf.keras.layers.LayerNormalization(),
+  LayerNormalization(),
   poly.Polynomial(units, basis=basis),
-  tf.keras.layers.LayerNormalization(),
+  LayerNormalization(),
   poly.Polynomial(units, basis=basis),
-  tf.keras.layers.LayerNormalization(),
+  LayerNormalization(),
   poly.Polynomial(units, basis=basis),
-  tf.keras.layers.LayerNormalization(),
-  tf.keras.layers.Dense(10, activation='softmax')
+  LayerNormalization(),
+  Dense(10, activation='softmax')
 ])
 
 model.compile(optimizer='adam',

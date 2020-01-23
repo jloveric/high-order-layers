@@ -1,6 +1,7 @@
 import tensorflow as tf
 import snovalleyai_piecewise_polynomial_layers.PolynomialLayers as poly
-from tensorflow.keras import datasets, layers, models
+from tensorflow.keras import datasets, models
+from tensorflow.keras.layers import *
 
 cifar10 = tf.keras.datasets.cifar10
 
@@ -12,17 +13,17 @@ units = 20
 basis = poly.b3
 
 model = models.Sequential()
-model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(32,32,3)))
-model.add(layers.MaxPooling2D((2, 2)))
-model.add(layers.Conv2D(64, (3, 3), activation='relu'))
-model.add(layers.MaxPooling2D((2, 2)))
-model.add(layers.Conv2D(64, (3, 3), activation='relu'))
-model.add(layers.Flatten())
+model.add(Conv2D(32, (3, 3), activation='relu', input_shape=(32,32,3)))
+model.add(MaxPooling2D((2, 2)))
+model.add(Conv2D(64, (3, 3), activation='relu'))
+model.add(MaxPooling2D((2, 2)))
+model.add(Conv2D(64, (3, 3), activation='relu'))
+model.add(Flatten())
 model.add(poly.Polynomial(units, basis=basis))
-model.add(tf.keras.layers.LayerNormalization())
+model.add(LayerNormalization())
 model.add(poly.Polynomial(units, basis=basis))
-model.add(tf.keras.layers.LayerNormalization())
-model.add(tf.keras.layers.Dense(10, activation='softmax'))
+model.add(LayerNormalization())
+model.add(Dense(10, activation='softmax'))
 
 model.compile(optimizer='adam',
               loss='sparse_categorical_crossentropy',

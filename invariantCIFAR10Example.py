@@ -1,5 +1,6 @@
 import tensorflow as tf
 import snovalleyai_piecewise_polynomial_layers.PolynomialLayers as poly
+from tensorflow.keras.layers import *
 cifar10 = tf.keras.datasets.cifar10
 
 (x_train, y_train),(x_test, y_test) = cifar10.load_data()
@@ -10,16 +11,16 @@ units = 60
 basis = poly.b2C
 
 model = tf.keras.models.Sequential([
-  tf.keras.layers.Flatten(input_shape=(32, 32, 3)),
+  Flatten(input_shape=(32, 32, 3)),
   poly.Polynomial(units, basis=basis),
-  tf.keras.layers.LayerNormalization(),
+  LayerNormalization(),
   poly.Polynomial(units, basis=basis),
-  tf.keras.layers.LayerNormalization(),
+  LayerNormalization(),
   poly.Polynomial(units, basis=basis),
-  tf.keras.layers.LayerNormalization(),
+  LayerNormalization(),
   poly.Polynomial(units, basis=basis),
-  tf.keras.layers.LayerNormalization(),
-  tf.keras.layers.Dense(10, activation='softmax')
+  LayerNormalization(),
+  Dense(10, activation='softmax')
 ])
 
 model.compile(optimizer='adam',
