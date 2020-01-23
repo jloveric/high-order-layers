@@ -62,6 +62,7 @@ model.evaluate(x_test, y_test)
 4. [cifar10 convolutional neural network](cifar10CNNExample.py)
 5. [invariant cifar10](invariantCIFAR10Example.py)
 
+These examples have not been tuned.
 
 # Example - Simple Polynomial
 
