@@ -85,7 +85,7 @@ Same problem, but comparison between 1st 3rd and 5th order piecewise continuous 
 
 # Comparison with ReLU layer
 
-It should be easy to solve this problem with a standard ReLU layer, well here are some results. The ReLU does not do a great job of fitting this curve, this is unsurprising
+It should be easy to solve this problem with a standard ReLU layer, well here are some results. The ReLU does not do a great job of fitting this curve, this is not surprising given that the set of functions you are constructing the sin wave from are not orthogonal.
 ![1 hidden layer with given number of units in each layer](sinRelu1.png)
 Adding a second layer and we get the result we expect.  However, at the cost of a massive increase in the total number of weights.  Since we are using a dense layer in the case of 5 units per layer we have a total of 35 weights.  At 10 units per layer we have 120 weights...  5th order polynomial pair has a total of 12 weights in the discontinuous case and 11 in the continuous case.  So, it's possible the number of weights decreases by as much as an order of magnitude - more research necessary, however this is inline with results from computational physics.
 ![2 hidden layers with given number of units in each layer](sinRelu2.png)
