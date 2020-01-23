@@ -2,7 +2,7 @@
 This example does not use the polynomial layers, but instead just tries
 to match the function using relu.  I've included this for comparison purposes.
 '''
-import sys
+import sys, os
 sys.path.append('../')
 
 import matplotlib.pyplot as plt
