@@ -1,6 +1,3 @@
-import sys
-sys.path.append('../')
-
 import tensorflow as tf
 import snovalleyai_piecewise_polynomial_layers.PolynomialLayers as poly
 from tensorflow.keras.layers import *

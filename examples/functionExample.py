@@ -3,9 +3,6 @@ This example is meant to demonstrate how you can map complex
 functions using a single input and single output with polynomial
 synaptic weights
 '''
-import sys
-sys.path.append('../')
-
 import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf

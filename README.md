@@ -57,7 +57,10 @@ model.evaluate(x_test, y_test)
 
 # Examples
 
-Run the example from inside the examples directory
+Run the example from the main directory.  For the functionExample case run
+```bash
+python3 -m examples.functionExample
+```
 
 1. [invariant mnist](examples/invariantMnistExample.py)
 2. [convolutional neural network mnist](examples/mnistCNNExample.py)
