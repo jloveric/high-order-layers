@@ -11,7 +11,7 @@ The idea is extremely simple - instead of a single weight at the synapse, use n-
 Using higher order polynomial representations might allow networks with much fewer total weights. In physics, higher order methods
 can be much more efficient, (while being more complex to implement). Spectral and discontinuous galerkin methods are examples of this.  Note that a standard neural network with relu activations is piecewise linear.  Here there are no bias weights and the "non-linearity" is in the synapse. 
 
-In addition, it's well known that the dendrites are also computational units in neurons, for example [Dendritic action potentials and computation in human layer 2/3 cortical neurons](https://science.sciencemag.org/content/367/6473/83) and this is a simple way to add more computational power...
+In addition, it's well known that the dendrites are also computational units in neurons, for example [Dendritic action potentials and computation in human layer 2/3 cortical neurons](https://science.sciencemag.org/content/367/6473/83) and this is a simple way to add more computational power into the artificial neural network model.
 
 # Installation
 
@@ -71,7 +71,7 @@ Here is the result for fitting a sin wave with no hidden layers.  There is only 
 
 # Example 2 - Piecewise Discontinuous Polynomial (2 pieces)
 
-Same problem, but comparison between 1st 3rd and 5th order piecewise discontinuous polynomial synapses.  We all know gradient descent doesn't work with discontinuous functions so this doesn't work... Except that these are actually non-convex optimizers so it still works.  You'll find it also works in multi-layer networks.  Whether it's better or not remains to be seen - however, for problems with actual discontinuities, like fluid dynamics, it might be better.
+Same problem, but comparison between 1st 3rd and 5th order piecewise discontinuous polynomial synapses.  This also works in deep networks - whether it's useful, that's a different question.  However, for problems that have discontinuities, like fluid mechanics, it might be useful.
 
 ![](sin5d.png)
 
