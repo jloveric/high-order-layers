@@ -40,7 +40,7 @@ modelSet = [
 colorIndex = ['red', 'green', 'blue', 'purple','black']
 symbol = ['+','x','o','v','.']
 
-thisModelSet = modelSetD
+thisModelSet = modelSet
 
 for i in range(0, len(thisModelSet)) :
 
@@ -52,7 +52,7 @@ for i in range(0, len(thisModelSet)) :
                 loss='mean_squared_error',
                 metrics=['accuracy'])
 
-    model.fit(xTrain, yTrain, epochs=6, batch_size=1)
+    model.fit(xTrain, yTrain, epochs=40, batch_size=1)
     model.evaluate(xTrain, yTrain)
 
     predictions = model.predict(xTest)
