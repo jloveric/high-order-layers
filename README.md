@@ -11,6 +11,8 @@ The idea is extremely simple - instead of a single weight at the synapse, use n-
 Using higher order polynomial representations might allow networks with much fewer total weights. In physics, higher order methods
 can be much more efficient, (while being more complex to implement). Spectral and discontinuous galerkin methods are examples of this.  Note that a standard neural network with relu activations is piecewise linear.  Here there are no bias weights and the "non-linearity" is in the synapse. 
 
+In addition, it's well known that the dendrites are also computational units in neurons, for example [Dendritic action potentials and computation in human layer 2/3 cortical neurons](https://science.sciencemag.org/content/367/6473/83) and this is a simple way to add more computational power...
+
 # Installation
 
 ```bash
@@ -33,13 +35,13 @@ basis = poly.b3
 
 model = tf.keras.models.Sequential([
   tf.keras.layers.Flatten(input_shape=(28, 28)),
-  poly.Polynomial(units, 28*28, basis=basis),
+  poly.Polynomial(units, basis=basis),
   tf.keras.layers.LayerNormalization(),
-  poly.Polynomial(units, units, basis=basis),
+  poly.Polynomial(units, basis=basis),
   tf.keras.layers.LayerNormalization(),
-  poly.Polynomial(units, units, basis=basis),
+  poly.Polynomial(units, basis=basis),
   tf.keras.layers.LayerNormalization(),
-  poly.Polynomial(units, units, basis=basis),
+  poly.Polynomial(units, basis=basis),
   tf.keras.layers.LayerNormalization(),
   tf.keras.layers.Dense(10, activation='softmax')
 ])
