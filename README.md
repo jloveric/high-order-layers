@@ -52,6 +52,15 @@ model.fit(x_train, y_train, epochs=20, batch_size=10)
 model.evaluate(x_test, y_test)
 ```
 
+# Examples
+
+1. [invariant mnist](invariantMnistExample.py)
+2. [convolutional neural network mnist](mnistCNNExample.py)
+3. [fitting a sin wave](functionExample.py)
+4. [cifar10 convolutional neural network](cifar10CNNExample.py)
+5. [invariant cifar10](invariantCIFAR10Example.py)
+
+
 # Example - Simple Polynomial
 
 Here is the result for fitting a sin wave with no hidden layers.  There is only one input neuron and one output neuron and no neuronal non-linearity.  A 5th order polynomial is used in the synapse - there are 6 weights and only one synapse in the network.
