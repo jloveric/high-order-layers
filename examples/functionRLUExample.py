@@ -2,6 +2,8 @@
 This example does not use the polynomial layers, but instead just tries
 to match the function using relu.  I've included this for comparison purposes.
 '''
+import sys
+sys.path.append('../')
 
 import matplotlib.pyplot as plt
 import numpy as np
