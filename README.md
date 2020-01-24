@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jloveric/piecewise-polynomial-layers.svg?branch=master)](https://travis-ci.org/jloveric/piecewise-polynomial-layers)
+
 # Piecewise Polynomial Layers for Tensorflow
 Tensorflow layers using piecewise Chebyshev polynomials.  Long ago I wrote a c++ code that explored higher 
 order weights in the synapse of a standard neural network [here](https://www.researchgate.net/publication/276923198_Discontinuous_Piecewise_Polynomial_Neural_Networks) .  Here we have some of that capability in Tensorflow.
