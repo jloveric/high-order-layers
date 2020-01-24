@@ -105,21 +105,21 @@ Adding a second layer and we get the result we expect.  However, at the cost of 
 import snovalleyai_piecewise_polynomial_layers.PolynomialLayers as poly
 
 #Non piecewise polynomials
-poly.b1 #linear chebyshev
-poly.b2 #quadratic chebyshev
-poly.b3 #3rd order chebyshev
-boly.b4 #4th order chebyshev
-poly.b5 #5th order chebyshev
+poly.b1 #linear
+poly.b2 #quadratic
+poly.b3 #3rd order
+boly.b4 #4th order
+poly.b5 #5th order
 
 ## Discontinous piecewise polynomials, 2 pieces
-poly.b1D #linear chebyshev (discontinuous pair)
-poly.b2D #quadratic chebyshev (discontinuous pair)
-poly.b5D #5th order chebyshev (discontinuous pair)
+poly.b1D #linear (discontinuous pair)
+poly.b2D #quadratic (discontinuous pair)
+poly.b5D #5th order (discontinuous pair)
 
 ## Continuous piecewise polynomials, 2 pieces
-poly.b1C #linear chebyshev (continuous pair)
-poly.b2C #quadratic chebyshev (continuous pair)
-poly.b5C #5th order chebyshev (continuous pair)
+poly.b1C #linear (continuous pair)
+poly.b2C #quadratic (continuous pair)
+poly.b5C #5th order (continuous pair)
 ```
 The layer inside tensorflow is then called (see mnist example above)
 ```
