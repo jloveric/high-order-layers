@@ -5,27 +5,24 @@ import numpy as np
 class TestStringMethods(unittest.TestCase):
 
     def test_basis(self):
-        #Basic test that there is no crash. Polynomials were already 
-        # verified in the c code, but move some
-        # of those here next.
-        b0([[1.0]])
+        # Basic test that there is no crash.
+        # TODO: port the c++ tests for the polynomials
+        b0(tf.convert_to_tensor([[1.0]]))
 
-        b1(np.array([[1.0,2.0]]))
-        b1D(np.array([[1.0]]))
-        b1C(np.array([[1.0]]))
+        b1(tf.convert_to_tensor([[1.0,2.0]]))
+        b1D(tf.convert_to_tensor([[1.0]]))
+        b1C(tf.convert_to_tensor([[1.0]]))
 
-        b2(np.array([[1.0]]))
-        b2C(np.array([[1.0]]))
-        b2D(np.array([[1.0]]))
+        b2(tf.convert_to_tensor([[1.0]]))
+        b2C(tf.convert_to_tensor([[1.0]]))
+        b2D(tf.convert_to_tensor([[1.0]]))
 
-        b3(np.array([[1.0]]))
-        b4(np.array([[1.0]]))
+        b3(tf.convert_to_tensor([[1.0]]))
+        b4(tf.convert_to_tensor([[1.0]]))
 
-        b5(np.array([[1.0]]))
-        b5C(np.array([[1.0]]))
-        b5D(np.array([[1.0]]))
-        
-        #self.assertEqual('foo'.upper(), 'FOO')
+        b5(tf.convert_to_tensor([[1.0]]))
+        b5C(tf.convert_to_tensor([[1.0]]))
+        b5D(tf.convert_to_tensor([[1.0]]))
 
 
 if __name__ == '__main__':
