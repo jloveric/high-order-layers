@@ -222,6 +222,8 @@ def basis1DG1(x):
     xl = tf.where(x <= 0, 2.0 * (x + 0.5), 0 * x)
     pos = tf.where(x > 0, 1.0, 0.0)
     neg = tf.where(x <= 0, 1.0, 0.0)
+    print('x.type', x)
+    print('pos.type',pos)
 
     res1 = pos * \
         tf.convert_to_tensor([xr * 0.0, xr * 0.0, -0.5 * (xr - 1.0), 0.5 * (xr + 1.0)])
