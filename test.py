@@ -6,7 +6,7 @@ import unittest
 from snovalleyai_piecewise_polynomial_layers.PolynomialLayers import *
 import numpy as np
 
-class TestStringMethods(unittest.TestCase):
+class TestPolynomials(unittest.TestCase):
 
     def test_basis(self):
         # Basic test that there is no crash.

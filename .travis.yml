@@ -4,6 +4,7 @@ python:
 install:
 - pip install pipenv
 - pipenv sync
+- pipenv install pylint
 script:
 - pylint **/*.py
 - python -m test
