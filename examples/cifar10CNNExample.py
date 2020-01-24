@@ -5,15 +5,15 @@ from tensorflow.keras.layers import *
 
 cifar10 = tf.keras.datasets.cifar10
 
-(x_train, y_train),(x_test, y_test) = cifar10.load_data()
-x_train, x_test = x_train/255.0, x_test / 255.0
+(x_train, y_train), (x_test, y_test) = cifar10.load_data()
+x_train, x_test = x_train / 255.0, x_test / 255.0
 
 units = 20
 
 basis = poly.b3
 
 model = models.Sequential()
-model.add(Conv2D(32, (3, 3), activation='relu', input_shape=(32,32,3)))
+model.add(Conv2D(32, (3, 3), activation='relu', input_shape=(32, 32, 3)))
 model.add(MaxPooling2D((2, 2)))
 model.add(Conv2D(64, (3, 3), activation='relu'))
 model.add(MaxPooling2D((2, 2)))

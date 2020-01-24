@@ -1,0 +1,6 @@
+install:
+- pip install pipenv
+- pipenv install --dev
+script:
+- pylint **/*.py
+- python -m test
