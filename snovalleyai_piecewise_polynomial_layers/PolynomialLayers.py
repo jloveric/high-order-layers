@@ -32,9 +32,11 @@ b2C = FunctionWrapper(basis2CG, 5)
 b2D = FunctionWrapper(basis2DG, 6)
 
 b3 = FunctionWrapper(basis3, 4)
+b3C = FunctionWrapper(basis3CG, 7)
 b3D = FunctionWrapper(basis3DG, 8)
 
 b4 = FunctionWrapper(basis4, 5)
+b4C = FunctionWrapper(basis4CG, 9)
 b4D = FunctionWrapper(basis4DG, 10)
 
 b5 = FunctionWrapper(basis5, 6)

@@ -11,22 +11,16 @@ def basis0(x):
 
 def basis1(x):
     return tf.convert_to_tensor([-0.5 * (x - 1.0), 0.5 * (x + 1.0)])
-    #return temp #swapAxes(temp)
 
 # quadratic polynomial
 def basis2(xIn):
-    # flatten
     x = tf.convert_to_tensor(xIn)
-    #x = xIn
-    temp = tf.convert_to_tensor(
+    return tf.convert_to_tensor(
         [0.5 * x * (x - 1), -1.0 * (x + 1) * (x - 1), 0.5 * x * (x + 1)])
-
-    return temp #tf.transpose(temp, [1, 2, 0])
-    # return swapAxes(temp)
 
 # cubic polynomial
 def basis3(xIn):
-    x = xIn  # np.tanh(xIn)
+    x = xIn
     eta = x
     powEta2 = eta * x
     powEta3 = powEta2 * x
@@ -42,10 +36,8 @@ def basis3(xIn):
     return temp
 
 # quartic polynomial
-
-
 def basis4(xIn):
-    x = xIn  # np.tanh(xIn)
+    x = xIn
 
     eta = x
     powEta2 = x * x
@@ -162,7 +154,7 @@ def basis5(xIn):
                                                      1.6 *
                                                      powEta5)])
 
-    return temp #swapAxes(temp)
+    return temp
 
 '''
 Discontinuous polynomial, 2 parts
@@ -196,76 +188,36 @@ def basis5DG(x):
 
 '''
 Continuous piecewise polynomials
-TODO: figure out how to combine this like above.  It's a little more difficult
-since there is overlap which alternates between left and right.
 '''
-def basis1CG(x):
+def basisCG(x, basis, width) :
+    paddingsR = tf.constant([[width-1, 0],[0,0],[0,0]])
+    paddingsL = tf.constant([[0,width-1],[0,0],[0,0]])
+
     xr = tf.where(x > 0, 2.0 * (x - 0.5), 0 * x)
     xl = tf.where(x <= 0, 2.0 * (x + 0.5), 0 * x)
     pos = tf.where(x > 0, 1.0, 0.0)
     neg = tf.where(x <= 0, 1.0, 0.0)
 
-    res1 = pos * \
-        tf.convert_to_tensor([xr * 0.0 + 1e-6, -0.5 * (xr - 1.0), 0.5 * (xr + 1.0)])
-    res2 = neg * \
-        tf.convert_to_tensor([-0.5 * (xl - 1.0), 0.5 * (xl + 1.0), xl * 0.0 + 1e-6])
+    fr = tf.pad(pos*basis(xr),paddingsR)
+    fl = tf.pad(neg*basis(xl),paddingsL)
+    print('fl.shape', fl.get_shape())
+    
+    f = fr+fl
+    print('f.shape', f.get_shape())
+    return f
 
-    return res1 + res2
-
+def basis1CG(x):
+    return basisCG(x, basis1, 2)
 
 def basis2CG(x):
-    xr = tf.where(x > 0, 2.0 * (x - 0.5), 0 * x)
-    xl = tf.where(x <= 0, 2.0 * (x + 0.5), 0 * x)
-    pos = tf.where(x > 0, 1.0, 0.0)
-    neg = tf.where(x <= 0, 1.0, 0.0)
+    return basisCG(x, basis2, 3)
 
-    res1 = pos * tf.convert_to_tensor([x * 0.0, x * 0.0, 0.5 * xr * (
-        xr - 1.0), -1.0 * (xr + 1) * (xr - 1), 0.5 * xr * (xr + 1.0)])
-    res2 = neg * tf.convert_to_tensor([0.5 * xl * (xl - 1.0), -1.0 * (
-        xl + 1) * (xl - 1), 0.5 * xl * (xl + 1.0), x * 0.0, x * 0.0])
+def basis3CG(x):
+    return basisCG(x, basis3, 4)
 
-    return res1 + res2
+def basis4CG(x):
+    return basisCG(x, basis4, 5)
 
 def basis5CG(x):
-
-    pos = tf.where(x > 0, 1.0, 0.0)
-    neg = tf.where(x <= 0, 1.0, 0.0)
-
-    xr = tf.where(x > 0, 2.0 * (x - 0.5), 0 * x)
-    xl = tf.where(x <= 0, 2.0 * (x + 0.5), 0 * x)
-
-    eta = xr
-    powEta2 = eta * eta
-    powEta3 = eta * powEta2
-    powEta4 = eta * powEta3
-    powEta5 = eta * powEta4
-
-    res1 = pos * tf.convert_to_tensor([eta * 0, eta * 0, eta * 0, eta * 0, eta * 0, (0.1 - 0.1 * eta - 1.2 * powEta2 + 1.2 * powEta3 + 1.6 * powEta4 - 1.6 * powEta5),
-                                       3.2 * powEta5 - 2.588854381999832 * powEta4 - 3.505572809000084 * powEta3 +
-                                       2.83606797749979 * powEta2 + 0.3055728090000842 * eta - 0.247213595499958,
-                                       -3.2 * powEta5 + 0.9888543819998319 * powEta4 + 5.294427190999916 * powEta3 -
-                                       1.63606797749979 * powEta2 - 2.094427190999916 * eta + 0.6472135954999582,
-                                       3.2 * powEta5 + 0.9888543819998319 * powEta4 - 5.294427190999916 * powEta3 -
-                                       1.63606797749979 * powEta2 + 2.094427190999916 * eta + 0.6472135954999582,
-                                       -3.2 * powEta5 - 2.588854381999832 * powEta4 + 3.505572809000084 * powEta3 +
-                                       2.83606797749979 * powEta2 - 0.3055728090000842 * eta - 0.247213595499958,
-                                       (0.1 + 0.1 * eta - 1.2 * powEta2 - 1.2 * powEta3 + 1.6 * powEta4 + 1.6 * powEta5)])
-
-    eta = xl
-    powEta2 = eta * eta
-    powEta3 = eta * powEta2
-    powEta4 = eta * powEta3
-    powEta5 = eta * powEta4
-
-    res2 = neg * tf.convert_to_tensor([(0.1 - 0.1 * eta - 1.2 * powEta2 + 1.2 * powEta3 + 1.6 * powEta4 - 1.6 * powEta5),
-                                       3.2 * powEta5 - 2.588854381999832 * powEta4 - 3.505572809000084 * powEta3 +
-                                       2.83606797749979 * powEta2 + 0.3055728090000842 * eta - 0.247213595499958,
-                                       -3.2 * powEta5 + 0.9888543819998319 * powEta4 + 5.294427190999916 * powEta3 -
-                                       1.63606797749979 * powEta2 - 2.094427190999916 * eta + 0.6472135954999582,
-                                       3.2 * powEta5 + 0.9888543819998319 * powEta4 - 5.294427190999916 * powEta3 -
-                                       1.63606797749979 * powEta2 + 2.094427190999916 * eta + 0.6472135954999582,
-                                       -3.2 * powEta5 - 2.588854381999832 * powEta4 + 3.505572809000084 * powEta3 +
-                                       2.83606797749979 * powEta2 - 0.3055728090000842 * eta - 0.247213595499958,
-                                       (0.1 + 0.1 * eta - 1.2 * powEta2 - 1.2 * powEta3 + 1.6 * powEta4 + 1.6 * powEta5), eta * 0, eta * 0, eta * 0, eta * 0, eta * 0])
-
-    return res1 + res2
+    return basisCG(x, basis5, 6)
+    

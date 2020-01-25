@@ -118,11 +118,15 @@ poly.b5 #5th order
 ## Discontinous piecewise polynomials, 2 pieces
 poly.b1D #linear (discontinuous pair)
 poly.b2D #quadratic (discontinuous pair)
+poly.b3D #dubic (discontinuous pair)
+poly.b4D #quartic (discontinuous pair)
 poly.b5D #5th order (discontinuous pair)
 
 ## Continuous piecewise polynomials, 2 pieces
 poly.b1C #linear (continuous pair)
 poly.b2C #quadratic (continuous pair)
+poly.b3C #cubic (continuous pair)
+poly.b4C #quartic (continuous pair)
 poly.b5C #5th order (continuous pair)
 ```
 The layer inside tensorflow is then called (see mnist example above)

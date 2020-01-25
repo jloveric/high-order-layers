@@ -27,6 +27,8 @@ modelSetD = [
 modelSetC = [
     {'name': 'Continuous 1', 'func': poly.b1C},
     {'name': 'Continuous 2', 'func': poly.b2C},
+    {'name': 'Continuous 3', 'func': poly.b3C},
+    {'name': 'Continuous 4', 'func': poly.b4C},
     {'name': 'Continuous 5', 'func': poly.b5C}
 ]
 
@@ -41,7 +43,7 @@ modelSet = [
 colorIndex = ['red', 'green', 'blue', 'purple', 'black']
 symbol = ['+', 'x', 'o', 'v', '.']
 
-thisModelSet = modelSetD
+thisModelSet = modelSetC
 
 for i in range(0, len(thisModelSet)):
 
