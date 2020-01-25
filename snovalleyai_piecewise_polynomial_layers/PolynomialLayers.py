@@ -1,5 +1,5 @@
 '''
-An attempt to implement my piecwise polynomial layers in tensorflow, in python for now.
+Piecewise Lagrange polynomials with gauss lobatto points for tensorflow!
 '''
 from . Functions import *
 from tensorflow.keras import layers

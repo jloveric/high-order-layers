@@ -9,7 +9,7 @@ setuptools.setup(
     version="1.1.1",
     author="John Loverich",
     author_email="john.loverich@gmail.com",
-    description="Piecewise polynomial layer for tensorflow",
+    description="Piecewise Lagrange Gauss Lobatto polynomial layer for tensorflow",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/jloveric/piecewise-polynomial-layers",
