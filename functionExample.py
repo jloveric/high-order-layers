@@ -58,7 +58,7 @@ for i in range(0, len(thisModelSet)):
 
     model.compile(optimizer='adam',
                   loss='mean_squared_error',
-                  metrics=['accuracy'])
+                  metrics=['mean_squared_error'])
 
     model.fit(xTrain, yTrain, epochs=10, batch_size=1)
     model.evaluate(xTrain, yTrain)
