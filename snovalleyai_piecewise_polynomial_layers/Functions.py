@@ -3,9 +3,25 @@ import numpy as np
 import sys
 
 
-def swapAxes(x):
-    return tf.transpose(x, [1, 2, 0])
+# Truncated fourier series basis
+def basisFourier(x, numFrequencies) :
+    series = tf.convert_to_tensor([0*x+0.5])
+    for i in range(1,numFrequencies) :
+        other = tf.convert_to_tensor([tf.math.cos(2*math.pi*i*x),tf.math.sin(2*math.pi*i*x)])
+        series = tf.concat([series,other],axis=0)
+    
+    return series
 
+def basisFourier1(x) :
+    return basisFourier(x, 2)
+
+def basisFourier2(x) :
+    return basisFourier(x, 3)
+
+def basisFourier3(x) :
+    return basisFourier(x, 4)
+
+# Polynomial basis functions
 def basis0(x):
     return tf.convert_to_tensor([x])
 

@@ -19,6 +19,7 @@ class FunctionWrapper():
     def __call__(self, val):
         return self.basis(val)
 
+
 b0 = FunctionWrapper(basis0, 1)
 
 b1 = FunctionWrapper(basis1, 2)

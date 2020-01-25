@@ -7,6 +7,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
 import snovalleyai_piecewise_polynomial_layers.PolynomialLayers as poly
+#import snovalleyai_piecewise_polynomial_layers.Functions.basisFourier as fourier
+
+#Fourier function wrapper
+#fourierFunction = poly.FunctionWrapper(fourier)
+
 
 offset = -0.1
 factor = 1.5 * 3.14159
