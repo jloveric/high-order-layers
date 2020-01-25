@@ -11,7 +11,6 @@ Store the function and the number of weights in the
 same object.
 """
 
-
 class FunctionWrapper():
     def __init__(self, basis, numWeights):
         self.numWeights = numWeights
@@ -19,7 +18,6 @@ class FunctionWrapper():
 
     def __call__(self, val):
         return self.basis(val)
-
 
 b0 = FunctionWrapper(basis0, 1)
 
@@ -42,7 +40,6 @@ b4D = FunctionWrapper(basis4DG, 10)
 b5 = FunctionWrapper(basis5, 6)
 b5C = FunctionWrapper(basis5CG, 11)
 b5D = FunctionWrapper(basis5DG, 12)
-
 
 '''
 Tensorflow layer that takes a function as a parameter
@@ -100,18 +97,12 @@ class Polynomial(layers.Layer):
         shape = self.w.shape
 
         res = self.basis(inputs)
-
-        print('res', res)
-        #res = tf.reshape(res, [-1, res.shape[1] * res.shape[2]])
-        #temp = tf.reshape(self.w, [-1, shape[1] * shape[2]])
-
-        print('resCall.shape',res.get_shape())
         
         res = tf.transpose(res,[2,1,0])
         res = tf.reshape(res, [-1, res.shape[0] * res.shape[2]])
         temp = tf.reshape(self.w, [-1, shape[0] * shape[2]])
 
         ans = tf.matmul(res, temp, transpose_a=False,
-                        transpose_b=True)  # +self.b
+                        transpose_b=True)
 
         return ans
