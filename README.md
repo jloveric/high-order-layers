@@ -73,33 +73,37 @@ python functionExample.py
 
 These examples have not been tuned.
 
-# Example - Simple Polynomial
+# Fitting a function
 
-Here is the result for fitting a sin wave with no hidden layers.  There is only one input neuron and one output neuron and no neuronal non-linearity.  Solution is for a linear, quadratic and 5th order polynomial used in the synapse - there are 6 weights in the 5th order polynomial and 2 units total (1 input and 1 output).
+The examples below are super simple - just fit a shifted sin wave.  Using the Lagrange Polynomial layers here a single input and ouput unit with no hidden layers is sufficient to fit the sin wave (as demonstrated below).  I'm hoping this helps illustrate exactly what is going on and why one might want to use a technique like this.  A comparison with a standard ReLU network with 1 and 2 hidden layers is provided for comparison.
+
+## Example - Simple Polynomial
+
+Solution is for a linear, cubic and 5th order polynomial used in the synapse - there are 6 weights in the 5th order polynomial and 2 units total (1 input and 1 output).
 
 ![](sin5p.png)
 
-# Example 2 - Piecewise Discontinuous Polynomial (2 pieces)
+## Example 2 - Piecewise Discontinuous Polynomial (2 pieces)
 
-Same problem, but comparison between 1st 3rd and 5th order piecewise discontinuous polynomial synapses.  This also works in deep networks - whether it's useful, that's a different question.  However, for problems that have discontinuities, like fluid mechanics, it might be useful.
+Same problem, but comparison between 1st, 2nd and 5th order piecewise discontinuous polynomial synapse.  This could be useful in problems that
+have discontinuties such as many problems in physics.
 
 ![](sin5d.png)
 
-# Example 3 - Piecewise Continuous Polynomial (2 pieces)
+## Example 3 - Piecewise Continuous Polynomial (2 pieces)
 
-Same problem, but comparison between 1st 3rd and 5th order piecewise continuous polynomial synapses.
+Same problem, but comparison between 1st, 2nd and 5th order piecewise continuous polynomial synapse.
 
 ![](sin5c.png)
 
-# Comparison with ReLU layer
+## Comparison with ReLU layer
 
-It should be easy to solve this problem with a standard ReLU layer, well here are some results. The ReLU does not do a great job of fitting this curve, this is not surprising given that the set of functions you are constructing the sin wave from are not orthogonal.
+ReLU network for comparison.
 ![1 hidden layer with given number of units in each layer](sinRelu1.png)
 Adding a second layer and we get the result we expect.  However, at the cost of a massive increase in the total number of weights.  Since we are using a dense layer in the case of 5 units per layer we have a total of 35 weights.  At 10 units per layer we have 120 weights...  5th order polynomial pair has a total of 12 weights in the discontinuous case and 11 in the continuous case.  So, it's possible the number of weights decreases by as much as an order of magnitude - more research necessary, however this is inline with results from computational physics.
 ![2 hidden layers with given number of units in each layer](sinRelu2.png)
 
-
-# Available polynomial orders
+## Available polynomial orders
 
 ```python
 import snovalleyai_piecewise_polynomial_layers.PolynomialLayers as poly

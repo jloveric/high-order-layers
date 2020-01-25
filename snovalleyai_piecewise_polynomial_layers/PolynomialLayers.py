@@ -27,13 +27,15 @@ b1 = FunctionWrapper(basis1, 2)
 b1D = FunctionWrapper(basis1DG, 4)
 b1C = FunctionWrapper(basis1CG, 3)
 
-
 b2 = FunctionWrapper(basis2, 3)
 b2C = FunctionWrapper(basis2CG, 5)
 b2D = FunctionWrapper(basis2DG, 6)
 
 b3 = FunctionWrapper(basis3, 4)
+b3D = FunctionWrapper(basis3DG, 8)
+
 b4 = FunctionWrapper(basis4, 5)
+b4D = FunctionWrapper(basis4DG, 10)
 
 b5 = FunctionWrapper(basis5, 6)
 b5C = FunctionWrapper(basis5CG, 11)
@@ -97,8 +99,15 @@ class Polynomial(layers.Layer):
 
         res = self.basis(inputs)
 
-        res = tf.reshape(res, [-1, res.shape[1] * res.shape[2]])
-        temp = tf.reshape(self.w, [-1, shape[1] * shape[2]])
+        print('res', res)
+        #res = tf.reshape(res, [-1, res.shape[1] * res.shape[2]])
+        #temp = tf.reshape(self.w, [-1, shape[1] * shape[2]])
+
+        print('resCall.shape',res.get_shape())
+        
+        res = tf.transpose(res,[2,1,0])
+        res = tf.reshape(res, [-1, res.shape[0] * res.shape[2]])
+        temp = tf.reshape(self.w, [-1, shape[0] * shape[2]])
 
         ans = tf.matmul(res, temp, transpose_a=False,
                         transpose_b=True)  # +self.b

@@ -19,6 +19,8 @@ yTrain = 0.5 * tf.math.cos(factor * (xTrain - offset))
 modelSetD = [
     {'name': 'Discontinuous 1', 'func': poly.b1D},
     {'name': 'Discontinuous 2', 'func': poly.b2D},
+    {'name': 'Discontinuous 3', 'func': poly.b3D},
+    {'name': 'Discontinuous 4', 'func': poly.b4D},
     {'name': 'Discontinuous 5', 'func': poly.b5D}
 ]
 
@@ -30,16 +32,16 @@ modelSetC = [
 
 modelSet = [
     {'name': '1st order', 'func': poly.b1},
-    #{'name' : '2nd order', 'func' : poly.b2},
+    {'name' : '2nd order', 'func' : poly.b2},
     {'name': '3rd order', 'func': poly.b3},
-    #{'name' : '4th order', 'func' : poly.b4},
+    {'name' : '4th order', 'func' : poly.b4},
     {'name': '5th order', 'func': poly.b5}]
 
 
 colorIndex = ['red', 'green', 'blue', 'purple', 'black']
 symbol = ['+', 'x', 'o', 'v', '.']
 
-thisModelSet = modelSetC
+thisModelSet = modelSetD
 
 for i in range(0, len(thisModelSet)):
 
