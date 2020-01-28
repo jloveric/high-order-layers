@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="snovalleyai_piecewise_polynomial_layers",
-    version="1.1.2",
+    version="1.1.3",
     author="John Loverich",
     author_email="john.loverich@gmail.com",
     description="Piecewise Lagrange Gauss Lobatto polynomial layer for tensorflow",
