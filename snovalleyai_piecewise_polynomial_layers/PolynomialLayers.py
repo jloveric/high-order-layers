@@ -44,8 +44,6 @@ b5D = FunctionWrapper(basis5DG, 12)
 '''
 Tensorflow layer that takes a function as a parameter
 '''
-
-
 class Polynomial(layers.Layer):
 
     '''
@@ -96,11 +94,15 @@ class Polynomial(layers.Layer):
         shapeIn = inputs.shape
         shape = self.w.shape
 
+        print('shape', shape, 'shapeIn', shapeIn)
+
         res = self.basis(inputs)
         
+        print('res.shape', res.shape)
+
         res = tf.transpose(res,[2,1,0])
         res = tf.reshape(res, [-1, res.shape[0] * res.shape[2]])
-        temp = tf.reshape(self.w, [-1, shape[0] * shape[2]])
+        temp = tf.reshape(self.w, [-1, shape[1] * shape[2]])
 
         ans = tf.matmul(res, temp, transpose_a=False,
                         transpose_b=True)
