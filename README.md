@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/jloveric/piecewise-polynomial-layers.svg?branch=master)](https://travis-ci.org/jloveric/piecewise-polynomial-layers)
-
+[![Zenodo](https://zenodo.org/badge/DOI/10.5281/zenodo.3628932.svg)](https://zenodo.org/record/3628932#.Xi-RAd-YXRY)
 # Piecewise Polynomial Layers for Tensorflow
 Tensorflow layers using piecewise Lagrange polynomials with Gauss Lobatto nodes.  This is a technique commonly used in finite element
 analysis and means that the weight assigned to each node is exactly the function value at that node.  Long ago I wrote a c++ code that explored higher 
