@@ -70,6 +70,8 @@ python functionExample.py
 3. [fitting a sin wave](examples/functionExample.py)
 4. [cifar10 convolutional neural network](examples/cifar10CNNExample.py)
 5. [invariant cifar10](examples/invariantCIFAR10Example.py)
+6. [invariant mnist using Fourier series](examples/MnistFourierResNetExample.py)
+
 
 These examples have not been tuned.
 
