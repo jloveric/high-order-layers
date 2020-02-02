@@ -99,7 +99,7 @@ Same problem, but comparison between 1st, 2nd and 5th order piecewise continuous
 
 ## Example 4 - Fourier series layer up to 5 frequencies
 
-Same problem, but comparison between 1, 2 and 5 and 5 frequency fourier series.  Remember, we are modeling a shifted sin wave and the fourier series is centered at zero.
+Same problem, but comparison between 1, 2 and 5 and 5 frequency fourier series.
 
 ![](sin5f.png)
 
