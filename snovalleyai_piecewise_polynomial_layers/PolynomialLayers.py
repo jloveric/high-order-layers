@@ -101,9 +101,8 @@ class Polynomial(layers.Layer):
         shapeIn = inputs.shape
         shape = self.w.shape
         res = self.basis(inputs)
-
-        res = tf.transpose(res,[2,1,0])
-        res = tf.reshape(res, [-1, res.shape[0] * res.shape[2]])
+        res = tf.transpose(res,[1,2,0])
+        res = tf.reshape(res, [-1, res.shape[1] * res.shape[2]])
         temp = tf.reshape(self.w, [-1, shape[1] * shape[2]])
 
         ans = tf.matmul(res, temp, transpose_a=False,

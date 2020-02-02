@@ -9,7 +9,7 @@ x_train, x_test = (x_train / 128.0 - 1.0), (x_test / 128.0 - 1.0)
 
 units = 20
 
-basis = poly.b3
+basis = poly.b2C
 
 model = tf.keras.models.Sequential([
     Flatten(input_shape=(28, 28)),
