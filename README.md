@@ -65,12 +65,12 @@ Run the example from the main directory.  For the functionExample case run
 python functionExample.py
 ```
 
-1. [invariant mnist](examples/invariantMnistExample.py)
-2. [convolutional neural network mnist](examples/mnistCNNExample.py)
-3. [fitting a sin wave](examples/functionExample.py)
-4. [cifar10 convolutional neural network](examples/cifar10CNNExample.py)
-5. [invariant cifar10](examples/invariantCIFAR10Example.py)
-6. [invariant mnist using Fourier series](examples/MnistFourierResNetExample.py)
+1. [invariant mnist](invariantMnistExample.py)
+2. [convolutional neural network mnist](mnistCNNExample.py)
+3. [fitting a sin wave](functionExample.py)
+4. [cifar10 convolutional neural network](cifar10CNNExample.py)
+5. [invariant cifar10](invariantCIFAR10Example.py)
+6. [invariant mnist using Fourier series](MnistFourierResNetExample.py)
 
 These examples have not been tuned.
 
