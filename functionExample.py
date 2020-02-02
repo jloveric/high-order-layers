@@ -41,10 +41,10 @@ modelSetC = [
 ]
 
 modelSet = [
-    #{'name': '1st order', 'func': poly.b1},
-    #{'name' : '2nd order', 'func' : poly.b2},
-    #{'name': '3rd order', 'func': poly.b3},
-    #{'name' : '4th order', 'func' : poly.b4},
+    {'name': '1st order', 'func': poly.b1},
+    {'name' : '2nd order', 'func' : poly.b2},
+    {'name': '3rd order', 'func': poly.b3},
+    {'name' : '4th order', 'func' : poly.b4},
     {'name': '5th order', 'func': poly.b5}]
 
 
@@ -56,7 +56,6 @@ thisModelSet = modelSet
 for i in range(0, len(thisModelSet)):
 
     model = tf.keras.models.Sequential([
-        poly.Polynomial(2, basis=thisModelSet[i]['func']),
         poly.Polynomial(1, basis=thisModelSet[i]['func']),
     ])
 
