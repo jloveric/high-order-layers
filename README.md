@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/jloveric/piecewise-polynomial-layers.svg?branch=master)](https://travis-ci.org/jloveric/piecewise-polynomial-layers)
 [![Zenodo](https://zenodo.org/badge/DOI/10.5281/zenodo.3628932.svg)](https://zenodo.org/record/3628932#.Xi-RAd-YXRY)
 # Piecewise Polynomial Layers for Tensorflow
-Tensorflow layers using piecewise Lagrange polynomials with Gauss Lobatto nodes.  This is a technique commonly used in finite element
+Tensorflow layers using piecewise Lagrange polynomials with Gauss Lobatto nodes (I'm also adding truncated fourier series and other orthogonal functions).  This is a technique commonly used in finite element
 analysis and means that the weight assigned to each node is exactly the function value at that node.  Long ago I wrote a c++ code that explored higher 
 order polynomials in the synapse of a standard neural network [here](https://www.researchgate.net/publication/276923198_Discontinuous_Piecewise_Polynomial_Neural_Networks) .  Here I'm implementing some of that capability in Tensorflow.
 
@@ -95,6 +95,12 @@ have discontinuties such as many problems in physics.
 Same problem, but comparison between 1st, 2nd and 5th order piecewise continuous polynomial synapse.
 
 ![](sin5c.png)
+
+## Example 4 - Fourier series layer up to 5 frequencies
+
+Same problem, but comparison between 1, 2 and 5 and 5 frequency fourier series.  Remember, we are modeling a shifted sin wave and the fourier series is centered at zero.
+
+![](sin5f.png)
 
 ## Comparison with ReLU layer
 

@@ -1,13 +1,13 @@
 import tensorflow as tf
 import numpy as np
 import sys
-
+import math
 
 # Truncated fourier series basis
 def basisFourier(x, numFrequencies) :
     series = tf.convert_to_tensor([0*x+0.5])
     for i in range(1,numFrequencies) :
-        other = tf.convert_to_tensor([tf.math.cos(2*math.pi*i*x),tf.math.sin(2*math.pi*i*x)])
+        other = tf.convert_to_tensor([tf.math.cos(math.pi*i*x),tf.math.sin(math.pi*i*x)])
         series = tf.concat([series,other],axis=0)
     
     return series
@@ -20,6 +20,12 @@ def basisFourier2(x) :
 
 def basisFourier3(x) :
     return basisFourier(x, 4)
+
+def basisFourier4(x) :
+    return basisFourier(x, 5)
+
+def basisFourier5(x) :
+    return basisFourier(x, 6)
 
 # Polynomial basis functions
 def basis0(x):

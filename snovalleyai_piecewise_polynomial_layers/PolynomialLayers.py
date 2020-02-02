@@ -42,6 +42,22 @@ b5 = FunctionWrapper(basis5, 6)
 b5C = FunctionWrapper(basis5CG, 11)
 b5D = FunctionWrapper(basis5DG, 12)
 
+b1F = FunctionWrapper(basisFourier1, 3)
+b2F = FunctionWrapper(basisFourier2, 5)
+b3F = FunctionWrapper(basisFourier3, 7)
+b4F = FunctionWrapper(basisFourier4, 9)
+b5F = FunctionWrapper(basisFourier5, 11)
+
+def basisFourier1(x) :
+    return basisFourier(x, 2)
+
+def basisFourier2(x) :
+    return basisFourier(x, 3)
+
+def basisFourier3(x) :
+    return basisFourier(x, 4)
+
+
 '''
 Tensorflow layer that takes a function as a parameter
 '''
