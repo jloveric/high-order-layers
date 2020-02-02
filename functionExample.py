@@ -16,6 +16,14 @@ yTest = 0.5 * np.cos(factor * (xTest - offset))
 xTrain = tf.random.uniform([1000], minval=-1.0, maxval=1, dtype=tf.float32)
 yTrain = 0.5 * tf.math.cos(factor * (xTrain - offset))
 
+modelSetF = [
+    {'name': 'Fourier 1', 'func': poly.b1F},
+    {'name': 'Fourier 2', 'func': poly.b2F},
+    {'name': 'Fourier 3', 'func': poly.b3F},
+    {'name': 'Fourier 4', 'func': poly.b4F},
+    {'name': 'Fourier 5', 'func': poly.b5F}
+]
+
 modelSetD = [
     {'name': 'Discontinuous 1', 'func': poly.b1D},
     {'name': 'Discontinuous 2', 'func': poly.b2D},
@@ -43,7 +51,7 @@ modelSet = [
 colorIndex = ['red', 'green', 'blue', 'purple', 'black']
 symbol = ['+', 'x', 'o', 'v', '.']
 
-thisModelSet = modelSetC
+thisModelSet = modelSetF
 
 for i in range(0, len(thisModelSet)):
 
@@ -53,7 +61,7 @@ for i in range(0, len(thisModelSet)):
 
     model.compile(optimizer='adam',
                   loss='mean_squared_error',
-                  metrics=['accuracy'])
+                  metrics=['mean_squared_error'])
 
     model.fit(xTrain, yTrain, epochs=10, batch_size=1)
     model.evaluate(xTrain, yTrain)
@@ -68,7 +76,7 @@ for i in range(0, len(thisModelSet)):
         label=thisModelSet[i]['name'])
 
 plt.plot(xTest, yTest, '-', label='actual', color='black')
-plt.title('polynomial synapse - no hidden layers')
+plt.title('fourier synapse - no hidden layers')
 plt.xlabel('x')
 plt.ylabel('y')
 plt.legend()

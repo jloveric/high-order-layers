@@ -19,6 +19,7 @@ class FunctionWrapper():
     def __call__(self, val):
         return self.basis(val)
 
+
 b0 = FunctionWrapper(basis0, 1)
 
 b1 = FunctionWrapper(basis1, 2)
@@ -40,6 +41,12 @@ b4D = FunctionWrapper(basis4DG, 10)
 b5 = FunctionWrapper(basis5, 6)
 b5C = FunctionWrapper(basis5CG, 11)
 b5D = FunctionWrapper(basis5DG, 12)
+
+b1F = FunctionWrapper(basisFourier1, 3)
+b2F = FunctionWrapper(basisFourier2, 5)
+b3F = FunctionWrapper(basisFourier3, 7)
+b4F = FunctionWrapper(basisFourier4, 9)
+b5F = FunctionWrapper(basisFourier5, 11)
 
 '''
 Tensorflow layer that takes a function as a parameter
