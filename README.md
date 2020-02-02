@@ -72,7 +72,6 @@ python functionExample.py
 5. [invariant cifar10](examples/invariantCIFAR10Example.py)
 6. [invariant mnist using Fourier series](examples/MnistFourierResNetExample.py)
 
-
 These examples have not been tuned.
 
 # Fitting a function
