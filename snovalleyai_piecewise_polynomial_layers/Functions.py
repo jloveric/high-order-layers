@@ -222,10 +222,9 @@ def basisCG(x, basis, width) :
 
     fr = tf.pad(pos*basis(xr),paddingsR)
     fl = tf.pad(neg*basis(xl),paddingsL)
-    print('fl.shape', fl.get_shape())
     
     f = fr+fl
-    print('f.shape', f.get_shape())
+    
     return f
 
 def basis1CG(x):
