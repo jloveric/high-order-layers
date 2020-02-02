@@ -134,6 +134,14 @@ poly.b2C #quadratic (continuous pair)
 poly.b3C #cubic (continuous pair)
 poly.b4C #quartic (continuous pair)
 poly.b5C #5th order (continuous pair)
+
+## Truncated Fourier series
+poly.b1F #1 frequency
+poly.b2F #2 frequencies
+poly.b3F #3 frequencies
+poly.b4F #4 frequencies
+poly.b5F #5 frequencies
+
 ```
 The layer inside tensorflow is then called (see mnist example above)
 ```
