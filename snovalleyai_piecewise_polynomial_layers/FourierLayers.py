@@ -18,7 +18,7 @@ class Fourier(layers.Layer):
     TODO: almost identical to PolynomialLayers... so... reuse
     '''
 
-    def __init__(self, units=None, frequencies=None, shift=None, length=1.0):
+    def __init__(self, units=None, frequencies=None, shift=0.0, length=2.0):
         super(Fourier, self).__init__()
 
         if units is None:
@@ -33,6 +33,7 @@ class Fourier(layers.Layer):
         self.frequencies = frequencies
         self.numWeights = 2*frequencies+1
         self.length = length
+        self.shift = shift
 
     def build(self, input_shape):
         input_dim = int(input_shape[-1])
@@ -58,7 +59,7 @@ class Fourier(layers.Layer):
             trainable=True)
 
     def basisFourier(self, x, numFrequencies) :
-        series = tf.convert_to_tensor([0*x+0.5])
+        series = tf.convert_to_tensor([0*x+0.5-self.shift])
         for i in range(1,1+numFrequencies) :
             other = tf.convert_to_tensor([tf.math.cos(math.pi*i*x/self.length),tf.math.sin(math.pi*i*x/self.length)])
             series = tf.concat([series,other],axis=0)

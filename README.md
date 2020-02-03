@@ -39,13 +39,13 @@ basis = poly.b3
 
 model = tf.keras.models.Sequential([
   Flatten(input_shape=(28, 28)),
-  poly.Polynomial(units, basis=basis),
+  poly.Polynomial(units, basis=basis, shift=0.0),
   LayerNormalization(),
-  poly.Polynomial(units, basis=basis),
+  poly.Polynomial(units, basis=basis, shift=0.0),
   LayerNormalization(),
-  poly.Polynomial(units, basis=basis),
+  poly.Polynomial(units, basis=basis, shift=0.0),
   LayerNormalization(),
-  poly.Polynomial(units, basis=basis),
+  poly.Polynomial(units, basis=basis, shift=0.0),
   LayerNormalization(),
   Dense(10, activation='softmax')
 ])
@@ -135,17 +135,18 @@ poly.b2C #quadratic (continuous pair)
 poly.b3C #cubic (continuous pair)
 poly.b4C #quartic (continuous pair)
 poly.b5C #5th order (continuous pair)
-
-## Truncated Fourier series
-poly.b1F #1 frequency
-poly.b2F #2 frequencies
-poly.b3F #3 frequencies
-poly.b4F #4 frequencies
-poly.b5F #5 frequencies
-
 ```
 The layer inside tensorflow is then called (see mnist example above)
 ```
 poly.Polynomial(units, input, basis=basis),
 ```
 where units is the number of units and input is the size of the input and basis would be 'poly.b3' for example.
+
+## Fourier Series Layer
+In addition there is a fourier series layer
+```python
+import snovalleyai_piecewise_polynomial_layers.FourierLayers as fourier
+...
+layer = fourier.Fourier(units, frequencies=frequencies, length=2.0, shift=0.0)
+```
+where 'units' is the number of units, 'frequencies' is the number of frequencies to include and 'length' is the wavelength of the longest wave.

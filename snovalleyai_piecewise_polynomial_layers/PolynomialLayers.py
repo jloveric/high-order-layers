@@ -42,12 +42,6 @@ b5 = FunctionWrapper(basis5, 6)
 b5C = FunctionWrapper(basis5CG, 11)
 b5D = FunctionWrapper(basis5DG, 12)
 
-b1F = FunctionWrapper(basisFourier1, 3)
-b2F = FunctionWrapper(basisFourier2, 5)
-b3F = FunctionWrapper(basisFourier3, 7)
-b4F = FunctionWrapper(basisFourier4, 9)
-b5F = FunctionWrapper(basisFourier5, 11)
-
 '''
 Tensorflow layer that takes a function as a parameter
 '''
@@ -59,7 +53,7 @@ class Polynomial(layers.Layer):
     basis is an instance of the "Function" class which contains a basis and the number of weights
     '''
 
-    def __init__(self, units=None, basis=None, shift=None):
+    def __init__(self, units=None, basis=None, shift=0.0):
         super(Polynomial, self).__init__()
 
         if units is None:
@@ -72,6 +66,7 @@ class Polynomial(layers.Layer):
 
         self.units = units
         self.basis = basis
+        self.shift = shift
 
     def build(self, input_shape):
         input_dim = int(input_shape[-1])
@@ -100,7 +95,7 @@ class Polynomial(layers.Layer):
 
         shapeIn = inputs.shape
         shape = self.w.shape
-        res = self.basis(inputs)
+        res = self.basis(inputs-self.shift)
         res = tf.transpose(res,[1,2,0])
         res = tf.reshape(res, [-1, res.shape[1] * res.shape[2]])
         temp = tf.reshape(self.w, [-1, shape[1] * shape[2]])
