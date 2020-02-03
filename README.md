@@ -105,7 +105,7 @@ Same problem, but comparison between 1, 2 and 5 and 5 frequency fourier series.
 
 ReLU network for comparison.
 ![1 hidden layer with given number of units in each layer](images/sinRelu1.png)
-Adding a second layer and we get the result we expect.  However, at the cost of a massive increase in the total number of weights.  Since we are using a dense layer in the case of 5 units per layer we have a total of 35 weights.  At 10 units per layer we have 120 weights...  5th order polynomial pair has a total of 12 weights in the discontinuous case and 11 in the continuous case.  So, it's possible the number of weights decreases by as much as an order of magnitude - more research necessary, however this is inline with results from computational physics.
+Adding a second layer and we get the result we expect.  However, at the cost of a massive increase in the total number of weights.  Since we are using a dense layer in the case of 5 units per layer we have a total of 35 weights.  At 10 units per layer we have 120 weights + bias weights.  5th order polynomial pair has a total of 12 weights in the discontinuous case and 11 in the continuous case.  So by moving to high order polynomials, it's possible the number of weights required decreases by as much as an order of magnitude - more research necessary, however this is inline with results from other fields.
 ![2 hidden layers with given number of units in each layer](images/sinRelu2.png)
 
 ## Available polynomial orders
