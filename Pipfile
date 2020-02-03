@@ -10,6 +10,7 @@ matplotlib = "*"
 
 [dev-packages]
 autopep8 = "*"
+gym = "*"
 
 [requires]
 python_version = "3.7"

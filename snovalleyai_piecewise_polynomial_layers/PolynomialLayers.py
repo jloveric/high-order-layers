@@ -59,7 +59,7 @@ class Polynomial(layers.Layer):
     basis is an instance of the "Function" class which contains a basis and the number of weights
     '''
 
-    def __init__(self, units=None, basis=None):
+    def __init__(self, units=None, basis=None, shift=None):
         super(Polynomial, self).__init__()
 
         if units is None:

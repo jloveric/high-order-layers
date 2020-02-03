@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
 import snovalleyai_piecewise_polynomial_layers.PolynomialLayers as poly
+import snovalleyai_piecewise_polynomial_layers.FourierLayers as fourier
 
 offset = -0.1
 factor = 1.5 * 3.14159
@@ -16,6 +17,7 @@ yTest = 0.5 * np.cos(factor * (xTest - offset))
 xTrain = tf.random.uniform([1000], minval=-1.0, maxval=1, dtype=tf.float32)
 yTrain = 0.5 * tf.math.cos(factor * (xTrain - offset))
 
+'''
 modelSetF = [
     {'name': 'Fourier 1', 'func': poly.b1F},
     {'name': 'Fourier 2', 'func': poly.b2F},
@@ -23,6 +25,7 @@ modelSetF = [
     {'name': 'Fourier 4', 'func': poly.b4F},
     {'name': 'Fourier 5', 'func': poly.b5F}
 ]
+'''
 
 modelSetD = [
     {'name': 'Discontinuous 1', 'func': poly.b1D},
@@ -45,8 +48,8 @@ modelSet = [
     {'name' : '2nd order', 'func' : poly.b2},
     {'name': '3rd order', 'func': poly.b3},
     {'name' : '4th order', 'func' : poly.b4},
-    {'name': '5th order', 'func': poly.b5}]
-
+    {'name': '5th order', 'func': poly.b5}
+    ]
 
 colorIndex = ['red', 'green', 'blue', 'purple', 'black']
 symbol = ['+', 'x', 'o', 'v', '.']
@@ -57,6 +60,7 @@ for i in range(0, len(thisModelSet)):
 
     model = tf.keras.models.Sequential([
         poly.Polynomial(1, basis=thisModelSet[i]['func']),
+        #fourier.Fourier(1, frequencies=20),
     ])
 
     model.compile(optimizer='adam',
