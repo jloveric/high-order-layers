@@ -82,26 +82,26 @@ The examples below are super simple - just fit a shifted sin wave.  Using the La
 
 Solution is for a linear, cubic and 5th order polynomial used in the synapse - there are 6 weights in the 5th order polynomial and 2 units total (1 input and 1 output).
 
-![](sin5p.png)
+![](images/sin5p.png)
 
 ## Example 2 - Piecewise Discontinuous Polynomial (2 pieces)
 
 Same problem, but comparison between 1st, 2nd and 5th order piecewise discontinuous polynomial synapse.  This could be useful in problems that
 have discontinuties such as many problems in physics.
 
-![](sin5d.png)
+![](images/sin5d.png)
 
 ## Example 3 - Piecewise Continuous Polynomial (2 pieces)
 
 Same problem, but comparison between 1st, 2nd and 5th order piecewise continuous polynomial synapse.
 
-![](sin5c.png)
+![](images/sin5c.png)
 
 ## Example 4 - Fourier series layer up to 5 frequencies
 
 Same problem, but comparison between 1, 2 and 5 and 5 frequency fourier series.
 
-![](sin5f.png)
+![](images/sin5f.png)
 
 ## Comparison with ReLU layer
 
