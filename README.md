@@ -145,6 +145,6 @@ In addition there is a fourier series layer
 ```python
 import snovalleyai_piecewise_polynomial_layers.FourierLayers as fourier
 ...
-layer = fourier.Fourier(units, frequencies=frequencies, length=2.0, shift=0.0)
+layer = fourier.Fourier(units, frequencies=10, length=2.0, shift=0.0)
 ```
 where 'units' is the number of units, 'frequencies' is the number of frequencies to include and 'length' is the wavelength of the longest wave.
