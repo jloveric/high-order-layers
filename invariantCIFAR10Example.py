@@ -7,7 +7,7 @@ cifar10 = tf.keras.datasets.cifar10
 x_train, x_test = (x_train / 128.0 - 1.0), (x_test / 128.0 - 1.0)
 
 units = 32
-basis = poly.b5
+basis = poly.b3
 
 def res_block(input_data, units=units, basis=basis) :
     x0 = LayerNormalization()(input_data)
