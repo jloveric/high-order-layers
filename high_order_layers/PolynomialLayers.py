@@ -1,6 +1,3 @@
-'''
-Piecewise Lagrange polynomials with gauss lobatto points for tensorflow!
-'''
 from . HighOrderLayer import *
 from . Functions import *
 import tensorflow as tf
@@ -17,7 +14,6 @@ class FunctionWrapper():
 
     def __call__(self, val):
         return self.basis(val)
-
 
 b0 = FunctionWrapper(basis0, 1)
 
@@ -42,7 +38,9 @@ b5C = FunctionWrapper(basis5CG, 11)
 b5D = FunctionWrapper(basis5DG, 12)
 
 '''
-Tensorflow layer that takes a function as a parameter
+Piecewise Lagrange polynomials with gauss lobatto points for tensorflow!
+TODO: might move the polynomial derivation inside so the user does not need
+to specify a basis, only the order and number of knots.
 '''
 class Polynomial(HighOrderLayer):
     def __init__(self, units=None, basis=None, shift=0.0):
