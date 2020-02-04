@@ -43,14 +43,15 @@ TODO: might move the polynomial derivation inside so the user does not need
 to specify a basis, only the order and number of knots.
 '''
 class Polynomial(HighOrderLayer):
-    def __init__(self, units=None, basis=None, shift=0.0):
+    def __init__(self, units=None, basis=None, shift=0.0,dtype=None):
         '''
         Parameters:
             units - is the number of units in the layer.
             basis - is an instance of the "Function" class which contains a basis and the number of weights.
             shift - shift the polynomial center by the given value.
+            dtype - the data type for the weight arrays
         '''
-        super(Polynomial, self).__init__(units=units)
+        super(Polynomial, self).__init__(units=units,dtype=dtype)
 
         if units is None:
             print('You must define the units')

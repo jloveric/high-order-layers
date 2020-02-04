@@ -12,7 +12,7 @@ class HighOrderLayer(layers.Layer):
     input_dim is the number of dimensions in the input
     '''
 
-    def __init__(self, units=None):
+    def __init__(self, units=None, dtype=None):
         super(HighOrderLayer, self).__init__()
         self.numWeights = None
         self.units = None
@@ -27,7 +27,7 @@ class HighOrderLayer(layers.Layer):
                     self.units,
                     input_dim,
                     self.numWeights),
-                dtype='float32'),
+                dtype=self.dtype),
             trainable=True)
 
         # Set all these to zero
@@ -37,7 +37,7 @@ class HighOrderLayer(layers.Layer):
                 shape=(
                     self.units,
                 ),
-                dtype='float32'),
+                dtype=self.dtype),
             trainable=True)
 
     def function(self, x) :
