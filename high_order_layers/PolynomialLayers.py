@@ -10,7 +10,6 @@ import numpy as np
 Store the function and the number of weights in the
 same object.
 """
-
 class FunctionWrapper():
     def __init__(self, basis, numWeights):
         self.numWeights = numWeights
