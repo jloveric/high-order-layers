@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/jloveric/high-order-layers.svg?branch=master)](https://travis-ci.org/jloveric/piecewise-polynomial-layers)
+[![Build Status](https://travis-ci.org/jloveric/piecewise-polynomial-layers.svg?branch=master)](https://travis-ci.org/jloveric/piecewise-polynomial-layers)
 [![Zenodo](https://zenodo.org/badge/DOI/10.5281/zenodo.3628932.svg)](https://zenodo.org/record/3628932#.Xi-RAd-YXRY)
 # Piecewise Polynomial and Fourier Series Layers for Tensorflow
 Tensorflow layers using piecewise Lagrange polynomials with Gauss Lobatto nodes (I'm also adding truncated fourier series and other orthogonal functions).  This is a technique commonly used in finite element
