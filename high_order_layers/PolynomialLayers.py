@@ -1,8 +1,8 @@
 '''
 Piecewise Lagrange polynomials with gauss lobatto points for tensorflow!
 '''
+from . HighOrderLayer import *
 from . Functions import *
-from tensorflow.keras import layers
 import tensorflow as tf
 import numpy as np
 
@@ -45,7 +45,7 @@ b5D = FunctionWrapper(basis5DG, 12)
 '''
 Tensorflow layer that takes a function as a parameter
 '''
-class Polynomial(layers.Layer):
+class Polynomial(HighOrderLayer):
 
     '''
     units is the number of units in the layer
@@ -54,7 +54,7 @@ class Polynomial(layers.Layer):
     '''
 
     def __init__(self, units=None, basis=None, shift=0.0):
-        super(Polynomial, self).__init__()
+        super(Polynomial, self).__init__(units=units)
 
         if units is None:
             print('You must define the units')
@@ -67,7 +67,9 @@ class Polynomial(layers.Layer):
         self.units = units
         self.basis = basis
         self.shift = shift
+        self.numWeights = self.basis.numWeights
 
+    '''
     def build(self, input_shape):
         input_dim = int(input_shape[-1])
 
@@ -90,6 +92,10 @@ class Polynomial(layers.Layer):
                 ),
                 dtype='float32'),
             trainable=True)
+    '''
+
+    def function(self, inputs) :
+        return self.basis(inputs-self.shift)
 
     def call(self, inputs):
 
