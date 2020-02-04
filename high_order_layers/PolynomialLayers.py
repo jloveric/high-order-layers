@@ -68,44 +68,5 @@ class Polynomial(HighOrderLayer):
         self.shift = shift
         self.numWeights = self.basis.numWeights
 
-    '''
-    def build(self, input_shape):
-        input_dim = int(input_shape[-1])
-
-        w_init = tf.random_normal_initializer()
-        self.w = tf.Variable(
-            initial_value=w_init(
-                shape=(
-                    self.units,
-                    input_dim,
-                    self.basis.numWeights),
-                dtype='float32'),
-            trainable=True)
-
-        # Set all these to zero
-        b_init = tf.zeros_initializer()
-        self.b = tf.Variable(
-            initial_value=b_init(
-                shape=(
-                    self.units,
-                ),
-                dtype='float32'),
-            trainable=True)
-    '''
-
     def function(self, inputs) :
         return self.basis(inputs-self.shift)
-
-    def call(self, inputs):
-
-        shapeIn = inputs.shape
-        shape = self.w.shape
-        res = self.basis(inputs-self.shift)
-        res = tf.transpose(res,[1,2,0])
-        res = tf.reshape(res, [-1, res.shape[1] * res.shape[2]])
-        temp = tf.reshape(self.w, [-1, shape[1] * shape[2]])
-
-        ans = tf.matmul(res, temp, transpose_a=False,
-                        transpose_b=True)
-
-        return ans
