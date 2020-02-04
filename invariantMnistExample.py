@@ -2,7 +2,7 @@
 #on this problem, but it may do better on time series.
 
 import tensorflow as tf
-from snovalleyai_piecewise_polynomial_layers import PolynomialLayers as poly
+from high_order_layers import PolynomialLayers as poly
 from tensorflow.keras.layers import *
 mnist = tf.keras.datasets.mnist
 layers = tf.keras.layers

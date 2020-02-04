@@ -5,7 +5,7 @@ to match the function using relu.  I've included this for comparison purposes.
 import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
-import snovalleyai_piecewise_polynomial_layers.PolynomialLayers as poly
+import high_order_layers.PolynomialLayers as poly
 from tensorflow.keras.layers import *
 
 

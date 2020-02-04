@@ -5,7 +5,7 @@ import tensorflow as tf
 import tensorflow.keras.layers as kl
 import tensorflow.keras.losses as kls
 import tensorflow.keras.optimizers as ko
-import snovalleyai_piecewise_polynomial_layers.FourierLayers as fourier
+import high_order_layers.FourierLayers as fourier
 import logging
 import gym
 

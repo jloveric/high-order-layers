@@ -6,8 +6,8 @@ synaptic weights
 import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
-import snovalleyai_piecewise_polynomial_layers.PolynomialLayers as poly
-import snovalleyai_piecewise_polynomial_layers.FourierLayers as fourier
+import high_order_layers.PolynomialLayers as poly
+import high_order_layers.FourierLayers as fourier
 
 offset = -0.1
 factor = 1.5 * 3.14159

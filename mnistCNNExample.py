@@ -1,5 +1,5 @@
 import tensorflow as tf
-import snovalleyai_piecewise_polynomial_layers.PolynomialLayers as poly
+import high_order_layers.PolynomialLayers as poly
 from tensorflow.keras import datasets, layers, models
 
 mnist = tf.keras.datasets.mnist
