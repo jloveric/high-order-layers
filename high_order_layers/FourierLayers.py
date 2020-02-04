@@ -11,13 +11,14 @@ is the offset, and then sin and cos for each frequency.
 '''
 class Fourier(HighOrderLayer):
 
-    '''
-    units is the number of units in the layer
-    frequencies is the number of frequencies to include in fourier series
-    shift is an added phase shift
-    length is the wave length of the longest wave
-    '''
     def __init__(self, units=None, frequencies=None, shift=0.0, length=2.0):
+        '''
+        Parameters :
+            units - is the number of units in the layer
+            frequencies - is the number of frequencies to include in fourier series
+            shift - is an added phase shift
+            length - is the wave length of the longest wave
+        '''
         super(Fourier, self).__init__(units=units)
 
         if units is None:

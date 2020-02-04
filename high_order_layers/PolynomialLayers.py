@@ -45,14 +45,13 @@ b5D = FunctionWrapper(basis5DG, 12)
 Tensorflow layer that takes a function as a parameter
 '''
 class Polynomial(HighOrderLayer):
-
-    '''
-    units is the number of units in the layer
-    input_dim is the number of dimensions in the input
-    basis is an instance of the "Function" class which contains a basis and the number of weights
-    '''
-
     def __init__(self, units=None, basis=None, shift=0.0):
+        '''
+        Parameters:
+            units - is the number of units in the layer.
+            basis - is an instance of the "Function" class which contains a basis and the number of weights.
+            shift - shift the polynomial center by the given value.
+        '''
         super(Polynomial, self).__init__(units=units)
 
         if units is None:
