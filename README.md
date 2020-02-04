@@ -19,7 +19,7 @@ In addition, it's well known that the dendrites are also computational units in 
 # Installation
 
 ```bash
-pip install snovalleyai-piecewise-polynomial-layers
+pip install high-order-layers
 ```
 
 # Use
@@ -111,7 +111,7 @@ Adding a second layer and we get the result we expect.  However, at the cost of 
 ## Available polynomial orders
 
 ```python
-import snovalleyai_piecewise_polynomial_layers.PolynomialLayers as poly
+import high_order_layers.PolynomialLayers as poly
 
 #Non piecewise polynomials
 poly.b1 #linear
