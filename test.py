@@ -3,7 +3,7 @@ os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 os.environ["TF_CPP_MIN_LOG_LEVEL"]="3" 
 
 import unittest
-from snovalleyai_piecewise_polynomial_layers.PolynomialLayers import *
+from high_order_layers.PolynomialLayers import *
 
 from tensorflow.keras.layers import *
 import tensorflow as tf
