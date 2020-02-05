@@ -1,6 +1,8 @@
 import tensorflow as tf
 import high_order_layers.PolynomialLayers as poly
-from tensorflow.keras import datasets, layers, models
+import high_order_layers.HighOrderConvolution2D as pconv
+from tensorflow.keras import datasets, models
+from tensorflow.keras.layers import *
 
 mnist = tf.keras.datasets.mnist
 
@@ -13,25 +15,25 @@ units = 20
 
 basis = poly.b3
 
-model = models.Sequential()
-model.add(
-    layers.Conv2D(
-        32, (3, 3), activation='relu', input_shape=(
-            28, 28, 1)))
-model.add(layers.MaxPooling2D((2, 2)))
-model.add(layers.Conv2D(64, (3, 3), activation='relu'))
-model.add(layers.MaxPooling2D((2, 2)))
-model.add(layers.Conv2D(64, (3, 3), activation='relu'))
-model.add(layers.Flatten())
-model.add(poly.Polynomial(units, basis=basis))
-model.add(tf.keras.layers.LayerNormalization())
-model.add(poly.Polynomial(units, basis=basis))
-model.add(tf.keras.layers.LayerNormalization())
-model.add(tf.keras.layers.Dense(10, activation='softmax'))
+inputs = tf.keras.Input(shape=(28,28,1))
+x = pconv.high_order_convolution2D(inputs,8,(3,3),basis=basis)
+x = MaxPooling2D((2, 2))(x)
+x = pconv.high_order_convolution2D(x,8,(3,3),basis=basis)
+x = MaxPooling2D((2, 2))(x)
+x = pconv.high_order_convolution2D(x,8,(3,3),basis=basis)
+x=Flatten()(x)
+x=poly.Polynomial(units, basis=basis)(x)
+x=LayerNormalization()(x)
+x=poly.Polynomial(units, basis=basis)(x)
+x=LayerNormalization()(x)
+outputs = Dense(10, activation='softmax')(x)
+model = tf.keras.Model(inputs, outputs)
 
 model.compile(optimizer='adam',
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
-model.fit(x_train, y_train, epochs=20, batch_size=10)
+callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=3)
+
+model.fit(x_train, y_train, epochs=20, batch_size=10, validation_data=(x_train, y_train))
 model.evaluate(x_test, y_test)

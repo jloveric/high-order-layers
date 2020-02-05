@@ -11,7 +11,6 @@ class HighOrderLayer(layers.Layer):
     units is the number of units in the layer
     input_dim is the number of dimensions in the input
     '''
-
     def __init__(self, units=None, dtype=None):
         super(HighOrderLayer, self).__init__()
         self.numWeights = None
