@@ -18,18 +18,15 @@ x_train, x_valid, y_train, y_valid = train_test_split(x_left, y_left, test_size=
 
 units = 20
 
-basis = poly.b3
+basis = poly.b5
 
 inputs = tf.keras.Input(shape=(28,28,1))
 x = pconv.high_order_convolution2D(inputs,8,(3,3),basis=basis)
 x = MaxPooling2D((2, 2))(x)
 x = pconv.high_order_convolution2D(x,16,(3,3),basis=basis)
 x = MaxPooling2D((2, 2))(x)
-x = pconv.high_order_convolution2D(x,16,(3,3),basis=basis)
-x = Flatten()(x)
-x = poly.Polynomial(units, basis=basis)(x)
-x = LayerNormalization()(x)
-x = poly.Polynomial(units, basis=basis)(x)
+x = pconv.high_order_convolution2D(x,32,(3,3),basis=basis)
+x = GlobalAveragePooling2D()(x)
 x = LayerNormalization()(x)
 outputs = Dense(10, activation='softmax')(x)
 model = tf.keras.Model(inputs, outputs)
@@ -38,7 +35,7 @@ model.compile(optimizer='adam',
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
-callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=3, restore_best_weights=False)
+callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=3, restore_best_weights=False,mode='min')
 
 model.fit(x_train, y_train, epochs=20, batch_size=10, validation_data=(x_valid, y_valid))
 model.evaluate(x_test, y_test)
