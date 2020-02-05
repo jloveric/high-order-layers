@@ -7,10 +7,12 @@ name = "pypi"
 tensorflow = "*"
 numpy = "*"
 matplotlib = "*"
+tensorflow-datasets = "*"
 
 [dev-packages]
 autopep8 = "*"
 gym = "*"
+sklearn = "*"
 
 [requires]
 python_version = "3.7"
