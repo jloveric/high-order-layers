@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="high_order_layers",
-    version="1.1.4",
+    version="1.1.5",
     author="John Loverich",
     author_email="john.loverich@gmail.com",
     description="Polynomial, piecewise polynomial, fourier series layers for tensorflow",

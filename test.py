@@ -4,10 +4,13 @@ os.environ["TF_CPP_MIN_LOG_LEVEL"]="3"
 
 import unittest
 from high_order_layers.PolynomialLayers import *
-
+import high_order_layers.HighOrderConvolution2D as pconv
 from tensorflow.keras.layers import *
 import tensorflow as tf
 import numpy as np
+cifar10 = tf.keras.datasets.cifar10
+
+
 
 class TestPolynomials(unittest.TestCase):
 
@@ -25,7 +28,12 @@ class TestPolynomials(unittest.TestCase):
         b2D(tf.convert_to_tensor([[1.0]]))
 
         b3(tf.convert_to_tensor([[1.0]]))
-        b4(tf.convert_to_tensor([[1.0]]))
+        b3C(tf.convert_to_tensor([[1.0]]))
+        b3D(tf.convert_to_tensor([[1.0]]))
+        
+        b3(tf.convert_to_tensor([[1.0]]))
+        b3C(tf.convert_to_tensor([[1.0]]))
+        b3D(tf.convert_to_tensor([[1.0]]))
 
         b5(tf.convert_to_tensor([[1.0]]))
         b5C(tf.convert_to_tensor([[1.0]]))
@@ -53,7 +61,7 @@ class TestPolynomials(unittest.TestCase):
                         metrics=['accuracy'])
 
             model.fit(xTrain, yTrain, epochs=1, batch_size=100)
-            model.evaluate(xTrain, yTrain)
+            #model.evaluate(xTrain, yTrain)
             self.assertTrue(True)
         except :
             print('Single input example failed.')
@@ -85,11 +93,79 @@ class TestPolynomials(unittest.TestCase):
                         metrics=['accuracy'])
 
             model.fit(x_train, y_train, epochs=1, batch_size=10000)
-            model.evaluate(x_test, y_test)
+            #model.evaluate(x_test, y_test)
             print('finished integration test')
             self.assertTrue(True)
         except :
             print('invariant mnist example crashed.')
+            self.assertTrue(False)
+
+    #Integration test for convolutional layer with continuous polynomial
+    def test_conv_layer_continuous(self) :
+        
+        try :
+            mnist = tf.keras.datasets.mnist
+            layers = tf.keras.layers
+
+            (x_train, y_train), (x_test, y_test) = cifar10.load_data()
+            x_train, x_test = x_train / 255.0, x_test / 255.0
+
+            basis = b3C
+
+            inputs = tf.keras.Input(shape=(32,32,3))
+            x = pconv.high_order_convolution2D(inputs,3,(3,3),basis=basis)
+            x = MaxPooling2D((2, 2))(x)
+            x = pconv.high_order_convolution2D(x,3,(3,3),basis=basis)
+            x = MaxPooling2D((2, 2))(x)
+            x = pconv.high_order_convolution2D(x,3,(3,3),basis=basis)
+            x = GlobalAveragePooling2D()(x)
+            x = LayerNormalization()(x)
+            outputs = Dense(10, activation='softmax')(x)
+            model = tf.keras.Model(inputs, outputs)
+
+            model.compile(optimizer='adam',
+                        loss='sparse_categorical_crossentropy',
+                        metrics=['accuracy'])
+            #Just run on the smaller test, make sure it doesn't crash!
+            model.fit(x_test, y_test, epochs=1, batch_size=10000)
+            print('finished integration test')
+            self.assertTrue(True)
+        except :
+            print('cifar10 continuous example crashed.')
+            self.assertTrue(False)
+
+    #Integration test for convolutional layer with discontinuous polynomial
+    def test_conv_layer_continuous(self) :
+        
+        try :
+            mnist = tf.keras.datasets.mnist
+            layers = tf.keras.layers
+
+            (x_train, y_train), (x_test, y_test) = cifar10.load_data()
+            x_train, x_test = x_train / 255.0, x_test / 255.0
+
+            basis = b3D
+
+            inputs = tf.keras.Input(shape=(32,32,3))
+            x = pconv.high_order_convolution2D(inputs,3,(3,3),basis=basis)
+            x = MaxPooling2D((2, 2))(x)
+            x = pconv.high_order_convolution2D(x,3,(3,3),basis=basis)
+            x = MaxPooling2D((2, 2))(x)
+            x = pconv.high_order_convolution2D(x,3,(3,3),basis=basis)
+            x = GlobalAveragePooling2D()(x)
+            x = LayerNormalization()(x)
+            outputs = Dense(10, activation='softmax')(x)
+            model = tf.keras.Model(inputs, outputs)
+
+            model.compile(optimizer='adam',
+                        loss='sparse_categorical_crossentropy',
+                        metrics=['accuracy'])
+            #Just run on the smaller test, make sure it doesn't crash!
+            model.fit(x_test, y_test, epochs=1, batch_size=10000)
+            print('finished integration test')
+            self.assertTrue(True)
+        except :
+            print('cifar10 discontinuous example crashed.')
             self.assertTrue(False)
 
 if __name__ == '__main__':
