@@ -54,7 +54,7 @@ modelSet = [
 colorIndex = ['red', 'green', 'blue', 'purple', 'black']
 symbol = ['+', 'x', 'o', 'v', '.']
 
-thisModelSet = modelSet
+thisModelSet = modelSetC
 
 for i in range(0, len(thisModelSet)):
 

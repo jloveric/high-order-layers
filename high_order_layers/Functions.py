@@ -188,8 +188,17 @@ def basis5DG(x):
 Continuous piecewise polynomials
 '''
 def basisCG(x, basis, width) :
-    paddingsR = tf.constant([[width-1, 0],[0,0],[0,0]])
-    paddingsL = tf.constant([[0,width-1],[0,0],[0,0]])
+    #Add one additional dimension for the batch, I believe.
+    dims = len(x.get_shape().as_list())+1
+    
+    lR = [ [0]*2 for _ in range(dims) ]
+    lL = [ [0]*2 for _ in range(dims) ]
+
+    lR[0][0] = width-1
+    lL[0][1] = width-1
+
+    paddingsR = tf.convert_to_tensor(lR)
+    paddingsL = tf.convert_to_tensor(lL)
 
     xr = tf.where(x > 0, 2.0 * (x - 0.5), 0 * x)
     xl = tf.where(x <= 0, 2.0 * (x + 0.5), 0 * x)

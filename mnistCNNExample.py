@@ -37,5 +37,5 @@ model.compile(optimizer='adam',
 
 callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=3, restore_best_weights=False,mode='min')
 
-model.fit(x_train, y_train, epochs=20, batch_size=10, validation_data=(x_valid, y_valid))
+model.fit(x_train, y_train, epochs=100, batch_size=10, validation_data=(x_valid, y_valid))
 model.evaluate(x_test, y_test)

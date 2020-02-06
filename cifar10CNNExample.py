@@ -13,7 +13,7 @@ x_train, x_valid, y_train, y_valid = train_test_split(x_left, y_left, test_size=
 
 units = 20
 
-basis = poly.b1D
+basis = poly.b1C
 
 inputs = tf.keras.Input(shape=(32,32,3))
 x = pconv.high_order_convolution2D(inputs,8,(3,3),basis=basis)
@@ -32,5 +32,5 @@ model.compile(optimizer='adam',
 
 callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=3, restore_best_weights=False)
 
-model.fit(x_train, y_train, epochs=20, batch_size=10, validation_data=(x_valid, y_valid))
+model.fit(x_train, y_train, epochs=100, batch_size=10, validation_data=(x_valid, y_valid))
 model.evaluate(x_test, y_test)
