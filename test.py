@@ -92,7 +92,7 @@ class TestPolynomials(unittest.TestCase):
                         loss='sparse_categorical_crossentropy',
                         metrics=['accuracy'])
 
-            model.fit(x_train, y_train, epochs=1, batch_size=10000)
+            model.fit(x_train, y_train, epochs=1, batch_size=10)
             #model.evaluate(x_test, y_test)
             print('finished integration test')
             self.assertTrue(True)
@@ -127,7 +127,7 @@ class TestPolynomials(unittest.TestCase):
                         loss='sparse_categorical_crossentropy',
                         metrics=['accuracy'])
             #Just run on the smaller test, make sure it doesn't crash!
-            model.fit(x_test, y_test, epochs=1, batch_size=10000)
+            model.fit(x_test, y_test, epochs=1, batch_size=10)
             print('finished integration test')
             self.assertTrue(True)
         except :
@@ -161,7 +161,7 @@ class TestPolynomials(unittest.TestCase):
                         loss='sparse_categorical_crossentropy',
                         metrics=['accuracy'])
             #Just run on the smaller test, make sure it doesn't crash!
-            model.fit(x_test, y_test, epochs=1, batch_size=10000)
+            model.fit(x_test, y_test, epochs=1, batch_size=10)
             print('finished integration test')
             self.assertTrue(True)
         except :
