@@ -29,7 +29,8 @@ class HighOrderLayer(layers.Layer):
                 dtype=self.dtype),
             trainable=True)
 
-        # Set all these to zero
+        # We don't need b
+        '''
         b_init = tf.zeros_initializer()
         self.b = tf.Variable(
             initial_value=b_init(
@@ -38,6 +39,7 @@ class HighOrderLayer(layers.Layer):
                 ),
                 dtype=self.dtype),
             trainable=True)
+        '''
 
     def function(self, x) :
         raise Exception('Function not implemented in '+type(self).__name__)
