@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/jloveric/high-order-layers.svg?branch=master)](https://travis-ci.org/jloveric/high-order-layers)
 [![Zenodo](https://zenodo.org/badge/DOI/10.5281/zenodo.3628932.svg)](https://zenodo.org/record/3628932#.Xi-RAd-YXRY)
 # Piecewise Polynomial and Fourier Series Layers for Tensorflow
+Note! I've moved to PyTorch where I continue to improve things since it's much more flexible, see my pytorch version [here](https://github.com/jloveric/high-order-layers-torch).
 Tensorflow layers using piecewise Lagrange polynomials with Gauss Lobatto nodes (I'm also adding truncated fourier series and other orthogonal functions).  This is a technique commonly used in finite element
 analysis and means that the weight assigned to each node is exactly the function value at that node.  Long ago I wrote a c++ code that explored higher 
 order polynomials in the synapse of a standard neural network [here](https://www.researchgate.net/publication/276923198_Discontinuous_Piecewise_Polynomial_Neural_Networks) .  Here I'm implementing some of that capability in Tensorflow.
